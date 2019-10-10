@@ -40,4 +40,31 @@
     </md-content>
   </body>
 
+  <section id="navbar">
+    <md-nav-bar md-selected-nav-item="currentNavItem">
+      <md-nav-item md-nav-click="goto('page1')" name="page1">
+        Page One
+      </md-nav-item>
+      <md-nav-item md-nav-href="#page2" name="page3">Page Two</md-nav-item>
+      <md-nav-item md-nav-sref="page3" name="page2">Page Three</md-nav-item>
+      <md-nav-item md-nav-sref="app.page4" sref-opts="{reload: true, notify: true}" name="page4">
+        Page Four
+      </md-nav-item>
+    </md-nav-bar>
+  </section>
+
+  <md-menu>
+    <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open some menu">
+      <md-icon md-menu-origin="" md-svg-icon="call:phone"></md-icon>
+    </md-button>
+    <md-menu-content>
+      <md-menu-item>
+        <md-button ng-click="doSomething()" aria-label="Do something">
+          <md-icon md-menu-align-target="" md-svg-icon="call:phone"></md-icon>
+          Do Something
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+
 </html>
