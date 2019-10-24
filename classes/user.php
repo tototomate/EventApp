@@ -1,6 +1,8 @@
 <?php
 
-class user {
+
+class user
+{
 
     private $user_id;
     private $name;
@@ -43,6 +45,31 @@ class user {
 
         $this->user_id = $tmp + 1;
     }
+
+    /**
+     * @return int|mixed
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVerificationToken()
+    {
+        return $this->verification_token;
+    }
+
+    /**
+     * @param bool $verification_token
+     */
+    public function setVerificationToken($verification_token)
+    {
+        $this->verification_token = $verification_token;
+    }
+
 
     /**
      * @return mixed
