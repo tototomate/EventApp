@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   
-    <title>Vorlage</title>
+    <title>EVA - EventApp</title>
     <link rel="icon" href="favicon.ico">
   
     <link rel="stylesheet" href="vendor/material-icons-3.0.1/material-icons.css">
@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="vendor/angular-material-1.1.19/angular-material.min.css">
   
     <link rel="stylesheet" href="app.css">
+
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.css">
 
     <script src="vendor/default-passive-events.js"></script>
     <script src="vendor/jquery-3.4.1/jquery.min.js"></script>
@@ -30,11 +32,23 @@
     <script src="vendor/angular-material-1.1.19/angular-material.min.js"></script>
     <script src="vendor/angular-ui-router-1.0.22/angular-ui-router.min.js"></script>
 
+    <script src="vendor/bootstrap/bootstrap.js"></script>
+
     <script src="app.js"></script>
+    <script src="vendor/angularjs-1.7.2/angular-route.js"></script>
+    <script src="components/evaMainComponent.js"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/evaProfileTab.js"></script>
     <script src="models/seite.js"></script>
 
   </head>
-  <body>
+  <body ng-controller="EvaMainController">
+
+  <!--<nav class="navbar navbar-fixed-top" id="header" layout-align="center center">
+    <h1 class="preview">Eva - Event App | Alpha build</h1>
+  </nav>-->
+
+  <eva-main></eva-main>
 
       <!--<eva-info-header>
         <eva-settings-tab></eva-settings-tab>
@@ -45,43 +59,5 @@
       <!-- Navbar muss noch zu Komponente gemacht werden
            Navbar noch nicht final
       -->
-      <div ng-app="EventApp" class="tabsdemoDynamicHeight" layout-align="center end">
-        <md-content class="md-padding">
-          <md-tabs md-dynamic-height="" md-border-bottom="" md-swipe-content="">
-
-            <md-tab label="Add" >
-              <!--<eva-add-event-tab>
-                Formular zum hinzufügen eines Events
-                -> Ergebnis in Datenbank speichern
-              </eva-add-event-tab>-->
-            </md-tab>
-
-            <md-tab label="Search">
-              <!--<eva-search-tab>
-                  Google Maps API
-                  Suchleiste - Datenbankeinbindung
-              </eva-search-tab>-->
-            </md-tab>
-
-            <md-tab label="Trending">
-              <!--<eva-trending-tab>
-                Suchleiste - Datenbankeinbindung
-                <eva-event-display></eva-event-display>
-                onclick -> eventDetailTab
-              </eva-trending-tab>-->
-            </md-tab>
-
-            <md-tab label="Profile">
-              <!--<eva-profile-tab>
-                Instagram API einbindung
-                Profile picture
-                <eva-settings-tab>
-                Errungenschaften
-              </eva-profile-tab>-->
-            </md-tab>
-          </md-tabs>
-        </md-content>
-      </div>
-
   </body>
 </html>

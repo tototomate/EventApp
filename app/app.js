@@ -2,7 +2,7 @@
 
 // Einziges Modul dieser App und seine Abhängigkeiten
 let app = angular.module("Vorlage", [ "ngResource", "ngMessages", "ngLocale", "ngSanitize",
-    "ngAnimate", "ngMaterial", "ui.router" ]);
+    "ngAnimate", "ngMaterial", "ui.router", "ngRoute", "ngAnimate"]);
 
 
 // Einstellungen für Debugging
@@ -58,7 +58,6 @@ app.config(function($localeProvider, $mdDateLocaleProvider) {
     $mdDateLocaleProvider.msgOpenCalendar = "Kalender öffnen";
 });
 
-
 // Workaround, um irreführende Fehlermeldungen von UI-Router zu unterdrücken
 app.run(function($state, $trace, $uiRouter) {
     $trace.enable(1);
@@ -71,4 +70,3 @@ app.run(function($state, $trace, $uiRouter) {
         }
     });
 });
-

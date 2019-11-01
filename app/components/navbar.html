@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<style type="text/css">
+    .navbar {
+        background: linear-gradient(to right, #000000, #434343, #000000);
+        background-size: 1000% 100%;
+        animation: create-gradient-shift 30s ease infinite;
+        margin:0;
+        padding:0;
+        box-shadow: 0 0 8px 2px #000000;
+
+    }
+
+    @keyframes create-gradient-shift{
+        0%{background-position:0% 50%}
+        100%{background-position:100% 100%}
+    }
+
+    .navbar-content{
+        color: white;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0);
+        width: 100%;
+        text-align: center;
+        transition: all .5s cubic-bezier(0.25, 1, .5, 1.25);
+        padding: 10px;
+        margin:0;
+    }
+
+    .navbar-content:hover {
+        color: red;
+    }
+
+    .focus {
+        background: #8E0E00;
+        background: linear-gradient(to top, #1F1C18, #8E0E00, #8E0E00);
+        transform: scale(1.1);
+        flex: 10%;
+        border-radius: 10px;
+        position: relative;
+        box-shadow: 0 0 5px 1px #888;
+    }
+
+    .focus i{
+        font-size: 2em;
+    }
+
+    .focus:hover {
+        color: white;
+    }
+</style>
+
+<nav class="navbar navbar-default navbar-fixed-bottom" >
+    <div class=".container" layout="row"  style="width:100%;">
+        <a class="navbar-content focus" href="#!/evaAddTab" ng-click="$ctrl.change($event)" flex=""><i class="material-icons">library_add</i></a>
+        <a class="navbar-content" href="#!/evaMapTab" ng-click="$ctrl.change($event)" flex=""><i class="material-icons">streetview</i></a>
+        <a class="navbar-content" href="#!/evaEventTab" ng-click="$ctrl.change($event)" flex=""><i class="material-icons">poll</i></a>
+        <a class="navbar-content" href="#!/evaProfileTab" ng-click="$ctrl.change($event)" flex=""><i class="material-icons">account_circle</i></a>
+    </div>
+</nav>
