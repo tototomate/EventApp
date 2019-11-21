@@ -1,14 +1,14 @@
 "use strict";
 
 app.component("evaEventTab", {
-    templateUrl: "components/evaEventTab.html",
-    controller: "eventEventController",
+    templateUrl: "components/trendingEventTab/eva-event-tab.html",
+    controller: "EventController",
     bindings: {
 
     }
 });
 
-app.controller("eventEventController", function ($scope) {
+app.controller("EventController", function ($scope) {
     $scope.veranstalter = ["Notorious",
         "prestige",
         "A.M.O",

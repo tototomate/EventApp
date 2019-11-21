@@ -1,12 +1,12 @@
 "use strict";
 
 app.component("evaNavbar", {
-    templateUrl: "components/navbar.html",
-    controller: "EvaNavbarController",
+    templateUrl: "components/eva-navbar.html",
+    controller: "NavbarController",
     bindings: {}
 });
 
-app.controller("EvaNavbarController", function () {
+app.controller("NavbarController", function () {
     this.change = function ($event) {
         var previous = document.querySelector(".focus");
         angular.element(previous).removeClass("focus");

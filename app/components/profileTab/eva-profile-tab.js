@@ -1,7 +1,7 @@
 "use strict";
 
 app.component("evaProfileTab",{
-    templateUrl:"components/eva-profile-tab.html",
+    templateUrl:"components/profileTab/eva-profile-tab.html",
     controller:"ProfileController",
     bindings:{
 
