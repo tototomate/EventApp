@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<style type="text/css">
+    .testDiv {
+        width:100vw;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: 2em;
+    }
+
+    .event-info-img {
+        border-radius: 25px;
+        box-shadow: 0px 0px 62px -7px rgba(0,0,0,0.75);
+        max-height: 300px;
+        max-width: 300px;
+        border: 1px solid black;
+    }
+    .event-info-content {
+        background: linear-gradient(to bottom,black,darkgrey,white);
+        border-radius: 25px;
+        box-shadow: 0px 0px 62px -7px rgba(0,0,0,0.75);
+        border: 1px solid black;
+    }
+
+    .image-container{
+        text-align: center;
+        vertical-align: middle;
+        display: table-cell;
+    }
+    .veranstalter-txt {
+        color: #721c24;
+        font-size: 20px;
+        font-family: "Microsoft YaHei UI Light";
+    }
+    .eventDescription {
+        visibility: hidden;
+    }
+</style>
+
+<div class="testDiv" ng-controller="evaEventInfoController">
+    <div class="event-info-content">
+        <div class="image-container">
+            <img src="images/event-temp.jpg" class="event-info-img">
+        </div>
+
+        <div class="container" layout="row" layout-align="space-around">
+            <p hidden class="eventDescription">{{$ctrl.eventInfo}}</p>
+            <h1 class="veranstalter-txt">
+                <i class="material-icons">bubble_chart</i>
+                {{$ctrl.title}}
+            </h1>
+        </div>
+    </div>
+</div>

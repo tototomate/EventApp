@@ -29,7 +29,7 @@ app.config(function($routeProvider) {
            controller  : "page"
        }).when('/evaEventTab', {
            templateUrl : 'components/evaEventTab.html',
-           controller  : "page"
+           controller  : "eventEventController"
        }).when('/evaProfileTab', {
            templateUrl : 'components/eva-profile-tab.html',
            controller  : "ProfileController"

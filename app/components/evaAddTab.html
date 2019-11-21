@@ -1,11 +1,84 @@
-<style type="text/css">
-    #testDiv {
-        background: darkslateblue;
-        width: 100vw;
-        height: 100vh;
+<style>
+    #send {
+        background-color: blue;
+        color: white;
+    }
+
+    #addimage{
+        background-color: #fff2e4;
+        color: black;
+        margin:0px;
+        padding:0px;
+    }
+
+    #addbeschreibung{
+        background-color: #fff2e4;
+        color:black;
+        margin:0px;
+        padding:0px;
+    }
+
+    #beschreibung{
+        background-color: white;
+    }
+
+    span.wrapper {
+        position: relative;
+        display: block;
+    }
+
+    span.wrapper #backgroundimg {
+        display: block;
+        width:100%;
+        border-radius:18px;
+    }
+
+    span.wrapper #addicon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: 50%;
+        width: auto;
+        transform: translate(-50%,-50%);
     }
 </style>
 
-<div id="testDiv">
+<div layout="column">
+
+    <md-toolbar class="md-hue-2" id="addimage">
+
+        <h3 layout="column" layout-align="center center" id="addimagetitle">Bitte fügen Sie ein Eventbild hinzu</h3>
+
+        <span class="wrapper">
+            <img src="images/grauer-hintergrund.jpg" id="backgroundimg" alt="Bild hinzufügen"/>
+            <input type="image" src="images/add-icon.png" id="addicon" alt="Bild hinzufügen"/>
+        </span>
+
+    </md-toolbar>
+
+    <br>
+
+    <md-button class="md-raised" id="eventtitel" flex>+ Eventtitel</md-button>
+
+    <br>
+
+    <md-toolbar class="md-hue-2" id="addbeschreibung">
+
+        <h3 layout="column" layout-align="center center" id="addtexttitle">Bitte fügen Sie eine Eventbeschreibung hinzu</h3>
+
+        <md-input-container class="md-block" id="beschreibung">
+            <textarea rows="10" ng-model="$ctrl.beschreibung" md-maxlength="2000" md-select-on-focus></textarea>
+        </md-input-container>
+
+    </md-toolbar>
+
+    <br>
+
+    <div layout="row">
+
+        <md-button class="md-raised" id="label" flex="50">+ Label</md-button>
+        <md-button class="md-raised" id="send" flex="50">SEND</md-button>
+
+    </div>
 
 </div>
