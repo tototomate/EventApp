@@ -1,10 +1,10 @@
 <style type="text/css">
-    .testDiv {
-        width:100vw;
+
+    .event {
         display: flex;
         justify-content: center;
         text-align: center;
-        padding: 2em;
+        padding:2em;
     }
 
     .event-info-img {
@@ -14,6 +14,7 @@
         max-width: 300px;
         border: 1px solid black;
     }
+
     .event-info-content {
         background: linear-gradient(to bottom,black,darkgrey,white);
         border-radius: 25px;
@@ -36,7 +37,7 @@
     }
 </style>
 
-<div class="testDiv" ng-controller="InfoController">
+<div class="event" ng-controller="InfoController">
     <div class="event-info-content">
         <div class="image-container">
             <img src="images/event-temp.jpg" class="event-info-img">

@@ -10,7 +10,5 @@ app.component("evaEventTab", {
 
 app.controller("EventController", function ($scope) {
     $scope.veranstalter = ["Notorious",
-        "prestige",
-        "A.M.O",
-        "Dirtytainment"];
+        "prestige","Moritzevent","Fabianevent","Cooles Event"];
 });

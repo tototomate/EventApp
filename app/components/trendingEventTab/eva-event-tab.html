@@ -1,19 +1,17 @@
 <style type="text/css">
-    #testDiv {
+    #events {
         background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-        margin-top:-2vw;
-        width: 100vw;
-        height: 100%;
-        padding-top:2vw;
-        padding-bottom: 5vw;
     }
 
     .eva-event-info:last-child {
-        padding-bottom:15em;
+        padding-bottom:5em;
+    }
+    eva-event-info{
+        width: 100vw;
     }
 </style>
 
-<div id="testDiv">
+<div id="events" layout="column" layout-align="center center">
     <!-- Neue Komponente Event Display-->
     <eva-event-info class="eva-event-info" ng-repeat="x in veranstalter" title="{{ x }}"></eva-event-info>
 </div>
