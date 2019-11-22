@@ -1,139 +1,154 @@
 <style type="text/css">
+
     .profileContent {
-        background: linear-gradient(to bottom,purple,darkslateblue,black,black);
+        /*background-color: #1A1110;*/
         width: 100vw;
-        height:100vh;
+        height: 100vh;
+        padding: 10px;
+        color: white;
     }
+
+    div.changeProfileContainer div p {
+        font-size: 1.3em;
+    }
+
+    div #events, #followers, #following {
+        font-size: 1.5em;
+        margin: 0px;
+    }
+
+    #profile p {
+        font-size: 1.5em;
+    }
+
+    div.head, div.profileName, #profileDesc, div.changeSettings {
+        box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.75);
+        border-radius: 25px;
+        background-color: black;
+        /*
+                box-shadow: 0px 0px 20px -7px rgba(0,0,0,0.75)*/
+    }
+
+    div.profileName {
+        margin-right: 5px;
+    }
+
+    div.changeSettings {
+        margin-left: 5px;
+    }
+
+    .changeProfileContainer {
+        padding: 10px 0px 10px 0px;
+    }
+
+    div.profileName, div.changeSettings {
+        height: 10vh;
+    }
+
+    div#profileDesc {
+        padding: 15px 5px 5px 15px;
+    }
+
+    div.profileName p, div.changeSettings p {
+        font-size: 1em;
+        margin-bottom: 0px;
+    }
+
 
     #profileImg {
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        position:absolute;
-        z-index:1;
-        border: 5px solid grey;
-        box-shadow: 0px 0px 14px 5px rgba(0,0,0,0.75);
-        top: 15%;
+        border: 5px white solid;
+        margin: 5px;
     }
 
-    .centered {
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%);
+    @media (min-width: 960px) {
+        #profileImg {
+            width: 400px;
+            height: 400px;
+        }
+
+        div #events, #followers, #following {
+            font-size: 2em;
+        }
+
+        div p {
+            font-size: 1.5em;
+        }
+
+        div.changeProfileContainer div p {
+            font-size: 1.5em;
+        }
     }
 
-    #profileInfo {
-        text-align: center;
-        width: 95vw;
-        height: 75vh;
-        border-radius: 20px;
-        background: linear-gradient(to bottom, rgba(35, 37, 38, 0.64), rgba(65, 67, 69, 0.67));
-        box-shadow: 0px 0px 14px 5px rgba(0,0,0,0.75);
-        position:absolute;
-        z-index:auto;
-        top: 50%;
-        padding-top: 10vh;
+    @media (max-width: 600px) {
+        #profileImg {
+            width: 150px;
+            height: 150px;
+        }
+
+        div #events, #followers, #following {
+            font-size: 1.2em;
+        }
+
+        div p {
+            font-size: 0.75em;
+        }
+
+        div.changeProfileContainer div p {
+            font-size: 1em;
+        }
     }
 
-    #highlightAt {
-        color: red;
-    }
-
-    #instaName {
-        border-radius: 20px;
-        margin-top: 15%;
-        background: linear-gradient(to bottom, #0575e6, #02134e);
-        font-size: 40px;
-        color:black;
-        font-family: "Calibri Light";
-        padding: 6px;
-        box-shadow: 0px 0px 21px 3px rgba(0,12,173,1);
-        margin-left: 10%;
-        margin-right: 10%;
-        margin-bottom: 5%;
-    }
-
-    #instaName:hover{
-        text-decoration: underline;
-    }
-
-    #instaStats > h1 {
-        border-radius: 20px;
-        color: black;
-    }
-
-    #followers {
-        background: linear-gradient(to bottom, #52c234, #245316);
-        box-shadow: 0px 0px 21px 3px rgb(28, 173, 0);
-        color: green;
-        margin-right: 1%;
-        margin-left: 10%;
-        margin-bottom: 5%;
-
-    }
-    #following {
-        background: linear-gradient(to bottom, #f00000, #681510);
-        box-shadow: 0px 0px 21px 3px rgb(173, 0, 18);
-        color: red;
-        margin-left: 1%;
-        margin-right: 10%;
-        margin-bottom: 5%;
-    }
-
-    #profileDesc {
-        border-radius: 20px;
-        background: white;
-        box-shadow: 0px 0px 14px 5px rgba(255, 255, 255, 0.75);
-        font-size: 20px;
-        font-family: "Calibri Light";
-        font-weight: bold;
-        padding:5px;
-        padding-bottom: 0;
-        margin-left: 5%;
-        margin-right: 5%;
-        background: linear-gradient(to bottom,white,white,white,grey);
-
-    }
-    #settings {
-        border-radius: 20px;
-        background: linear-gradient(to bottom,white,white,grey);
-        box-shadow: 0px 0px 14px 5px rgba(255, 255, 255, 0.75);
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-    #achievments {
-        margin-left: 5%;
-        margin-right: 5%;
-        box-shadow: 0px 0px 14px 5px rgba(255, 255, 255, 0.75);
-        border-radius: 20px ;
-        background: white;
-        padding: 2px;
-    }
-
-    #achievments img {
-        width: 25%;
-        height: 25%;
-    }
-
-    .customBreak {
-        height: 10px;
-    }
 
 </style>
 
-<div class="profileContent col-lg-12">
-    <img class="centered" id="profileImg" src="{{profileSrc}}">
+
+<div class="profileContent">
+    <div class="head" layout="row" layout="space-between">
+        <div id="profileImgContainer">
+            <img alt="Your Profile Picture" class="profileImg" id="profileImg" src="{{profileSrc}}">
+        </div>
+        <div id="stats" layout="row" layout-align="space-around center" flex>
+            <div layout="column">
+                <p id="events">{{eventcount}}</p>
+                <p>Events</p>
+            </div>
+            <div layout="column">
+
+                <p id="followers">{{followers}}</p>
+                <p>Fans</p>
+            </div>
+            <div layout="column">
+
+                <p id="following">{{following}}</p>
+                <p>Abos</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="changeProfileContainer" layout="row" layout-align="space-around center">
+        <div class="profileName" layout="row" layout-align="center center" flex><p>@{{profileName}}</p></div>
+        <div class="changeSettings" layout="row" layout-align="center center" flex><p>Profil bearbeiten</p></div>
+    </div>
+    <div id="profileDesc">
+        <p>{{profileBio}}</p>
+    </div>
+    <div>
+        <eva-event-info ng-repeat="y in events" title="{{y}}"></eva-event-info>
+    </div>
+
+</div>
+
+<!--<div class="profileContent col-lg-12">
+
     <div id="profileInfo" class="centered">
         <div class="setWidth" layout="column">
             <h1 id="instaName"><span id="highlightAt">@</span>{{profileName}}</h1>
-            <div id="instaStats" layout="row" layout-align="space-around">
-                <h1 flex="" id="followers">{{followers}}</h1>
-                <h1 flex="" id="following">{{following}}</h1>
-            </div>
+
             <br class="customBreak">
-            <div id="profileDesc">
-                <p>{{profileBio}}</p>
-            </div>
+
             <br class="customBreak">
             <div id="settings">
                 <h3>Change Settings</h3>
@@ -149,4 +164,6 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
+
+
