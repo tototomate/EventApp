@@ -1,0 +1,59 @@
+<style type="text/css">
+
+    .header {
+        /*background: linear-gradient(to right, #000000, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        /*background-size: 1000% 100%;*/
+        /*animation: create-gradient-shift 10s ease infinite;*/
+        height: 10vh;
+        background: black;
+        box-shadow: 0 0 8px 2px #000000;
+        display: flex;
+        padding: 10px;
+        transition: top 0.3s;
+    }
+
+
+    div.searchBar {
+        flex: 4;
+    }
+    div.searchBar input{
+        display: flex;
+        width: 100%;
+        flex-grow:1;
+        border-radius: 25px;
+        border: 0;
+    }
+
+    div.filter select {
+        flex: 1;
+        min-width: 5em;
+        margin-left: 5px;
+        border-radius: 25px;
+        border: 0;
+    }
+    div.filter select option {
+        border-radius: 25px;
+    }
+    div.searchBar input[placeholder]{
+        padding:5px 5px 5px 10px;
+    }
+    select{
+        padding:5px 5px 5px 10px;
+        height: 100%;
+    }
+
+
+</style>
+
+<div class="header" layout="row" layout-align="start center">
+
+    <div class="searchBar">
+        <input type="text" Placeholder="Suche" flex>
+    </div>
+    <div class="filter" placeholder="Filter">
+        <select>
+            <option ng-repeat="x in $ctrl.filteroption" value="{{x}}">{{x}}</option>
+        </select>
+    </div>
+
+</div>

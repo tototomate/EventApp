@@ -2,10 +2,14 @@
 
     .profileContent {
         /*background-color: #1A1110;*/
-        width: 100vw;
-        height: 100vh;
         padding: 10px;
         color: white;
+        justify-content: center;
+    }
+
+    .centerEverything {
+        max-width: 300px;
+        margin:0em;
     }
 
     div.changeProfileContainer div p {
@@ -46,7 +50,12 @@
     }
 
     div#profileDesc {
-        padding: 15px 5px 5px 15px;
+        /*Blocksatz
+        text-align: justify;
+        padding: 15px 15px 15px 15px;
+        */
+        padding: 10px 15px 5px 15px;
+        margin-bottom: 0px;
     }
 
     div.profileName p, div.changeSettings p {
@@ -63,22 +72,26 @@
         margin: 5px;
     }
 
+    .eva-event-info:last-child {
+        padding-bottom: 5em;
+    }
+
     @media (min-width: 960px) {
+        .centerEverything{
+            max-width: 500px;
+        }
         #profileImg {
-            width: 400px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
         }
 
         div #events, #followers, #following {
-            font-size: 2em;
+            font-size: 1.7em;
         }
 
-        div p {
-            font-size: 1.5em;
-        }
 
-        div.changeProfileContainer div p {
-            font-size: 1.5em;
+        div.changeProfileContainer, div p {
+            font-size: 1.2em;
         }
     }
 
@@ -100,45 +113,57 @@
             font-size: 1em;
         }
     }
+    @media (min-width: 600px){
+        .centerEverything{
+            max-width: 500px;
+        }
+    }
+    @media (min-width: 960px){
+        .centerEverything{
+            max-width: 600px;
+        }
+    }
 
 
 </style>
 
 
-<div class="profileContent">
-    <div class="head" layout="row" layout="space-between">
-        <div id="profileImgContainer">
-            <img alt="Your Profile Picture" class="profileImg" id="profileImg" src="{{profileSrc}}">
+<div class="profileContent" layout="row" layout="center center">
+    <div class="centerEverything">
+        <div class="head" layout="row" layout="space-between">
+            <div id="profileImgContainer">
+                <img alt="Your Profile Picture" class="profileImg" id="profileImg" src="{{profileSrc}}">
+            </div>
+            <div id="stats" layout="row" layout-align="space-around center" flex>
+                <div layout="column">
+                    <p id="events">{{eventcount}}</p>
+                    <p>Events</p>
+                </div>
+                <div layout="column">
+
+                    <p id="followers">{{followers}}</p>
+                    <p>Fans</p>
+                </div>
+                <div layout="column">
+
+                    <p id="following">{{following}}</p>
+                    <p>Abos</p>
+                </div>
+            </div>
+
         </div>
-        <div id="stats" layout="row" layout-align="space-around center" flex>
-            <div layout="column">
-                <p id="events">{{eventcount}}</p>
-                <p>Events</p>
-            </div>
-            <div layout="column">
-
-                <p id="followers">{{followers}}</p>
-                <p>Fans</p>
-            </div>
-            <div layout="column">
-
-                <p id="following">{{following}}</p>
-                <p>Abos</p>
-            </div>
+        <div class="changeProfileContainer" layout="row" layout-align="space-around center">
+            <div class="profileName" layout="row" layout-align="center center" flex><p>@{{profileName}}</p></div>
+            <div class="changeSettings" layout="row" layout-align="center center" flex><p>Profil bearbeiten</p></div>
+        </div>
+        <div id="profileDesc">
+            <p>{{profileBio}}</p>
         </div>
 
+        <div class="eva-event-info">
+            <eva-event-info ng-repeat="y in events" title="{{y}}"></eva-event-info>
+        </div>
     </div>
-    <div class="changeProfileContainer" layout="row" layout-align="space-around center">
-        <div class="profileName" layout="row" layout-align="center center" flex><p>@{{profileName}}</p></div>
-        <div class="changeSettings" layout="row" layout-align="center center" flex><p>Profil bearbeiten</p></div>
-    </div>
-    <div id="profileDesc">
-        <p>{{profileBio}}</p>
-    </div>
-    <div>
-        <eva-event-info ng-repeat="y in events" title="{{y}}"></eva-event-info>
-    </div>
-
 </div>
 
 <!--<div class="profileContent col-lg-12">
