@@ -8,8 +8,7 @@
     }
 
     .centerEverything {
-        max-width: 300px;
-        margin:0em;
+        margin: 0em;
     }
 
     div.changeProfileContainer div p {
@@ -69,17 +68,21 @@
         height: 200px;
         border-radius: 50%;
         border: 5px white solid;
-        margin: 5px;
     }
 
-    .eva-event-info:last-child {
-        padding-bottom: 5em;
+    #profileImgContainer {
+        margin: 10px;
+    }
+
+    div eva-event-info.eva-event-info:hover {
+    scale(1.1);
     }
 
     @media (min-width: 960px) {
-        .centerEverything{
+        .centerEverything {
             max-width: 500px;
         }
+
         #profileImg {
             width: 200px;
             height: 200px;
@@ -94,6 +97,7 @@
             font-size: 1.2em;
         }
     }
+
 
     @media (max-width: 600px) {
         #profileImg {
@@ -113,13 +117,15 @@
             font-size: 1em;
         }
     }
-    @media (min-width: 600px){
-        .centerEverything{
+
+    @media (min-width: 600px) {
+        .centerEverything {
             max-width: 500px;
         }
     }
-    @media (min-width: 960px){
-        .centerEverything{
+
+    @media (min-width: 960px) {
+        .centerEverything {
             max-width: 600px;
         }
     }
@@ -160,8 +166,9 @@
             <p>{{profileBio}}</p>
         </div>
 
-        <div class="eva-event-info">
-            <eva-event-info ng-repeat="y in events" title="{{y}}"></eva-event-info>
+        <div layout="column" layout-align="center center">
+            <!-- Neue Komponente Event Display-->
+            <eva-event-info class="eva-event-info" ng-repeat="x in events" title="{{ x }}"></eva-event-info>
         </div>
     </div>
 </div>

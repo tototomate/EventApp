@@ -25,5 +25,10 @@ app.config(function($routeProvider) {
        }).when('/evaProfileTab', {
            templateUrl : 'components/profileTab/eva-profile-tab.html',
            controller  : "ProfileController"
-       });
+       }).when('/evaEventFullInfo', {
+            templateUrl : 'components/trendingEventTab/eva-event-full-info.html',
+            controller  : "FullInfoController"
+       }).otherwise({
+            redirectTo: "/evaEventTab"
+   });
 });

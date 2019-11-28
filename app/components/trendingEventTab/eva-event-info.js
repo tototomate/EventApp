@@ -9,5 +9,5 @@ app.component("evaEventInfo", {
 });
 
 app.controller("InfoController", function () {
-    this.eventInfo = "Lorem Ipsum ipsum lorenz";
+
 });
