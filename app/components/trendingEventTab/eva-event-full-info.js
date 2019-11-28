@@ -2,7 +2,7 @@
 
 app.component("evaEventInfo", {
     templateUrl: "components/trendingEventTab/eva-event-full-info.html",
-    controller: "InfoController",
+    controller: "FullInfoController",
     bindings: {
         title: '@'
     }

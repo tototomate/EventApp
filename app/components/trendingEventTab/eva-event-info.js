@@ -9,4 +9,5 @@ app.component("evaEventInfo", {
 });
 
 app.controller("InfoController", function () {
+
 });
