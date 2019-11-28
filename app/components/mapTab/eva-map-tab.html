@@ -1,11 +1,66 @@
 <style type="text/css">
-    #events {
-        background: blueviolet;
-        width: 100vw;
-        height: 100vh;
+
+    .event {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: 15px 2em 15px 2em;
+    }
+
+    .event-info-content {
+        height: 100%;
+        background: linear-gradient(to bottom, black, darkgrey, white);
+        border-radius: 25px;
+        box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
+        border: 1px solid black;
+    }
+
+    @media (min-width: 600px) {
+        .event {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    @media (min-width: 960px) {
+        .event {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
+
+    #datum, #entfernung, #filter, #suche["placeholder"]{
+        border-radius: 15px;
+        width:350px;
+        margin-bottom:5px;
+
+    }
+    input["placeholder"]{
+        border-radius: 15px;
+        width:350px;
+        margin-bottom:5px;
+
     }
 </style>
 
-<div id="testDiv">
+<div class="event" ng-controller="InfoController">
+    <div class="event-info-content" layout="column">
+        <input class="searchBox" type="search" id="suche" placeholder="Suche">
+        <select id="entfernung">
+            <option selected disabled>Entfernung</option>
+            <option value="1km">1km</option>
+            <option value="2km">2km</option>
+            <option value="5km">5km</option>
+            <option value="10km">10km</option>
+        </select>
+        <input type="date" id="datum">
+        <select id="filter">
+            <option selected disabled>Mehr Filter</option>
+            <option value="filter1">Filter1</option>
+            <option value="filter2">Filter2</option>
+            <option value="filter3">Filter3</option>
+            <option value="filter4">Filter4</option>
+        </select>
+    </div>
 
 </div>
