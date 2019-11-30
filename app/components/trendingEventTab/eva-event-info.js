@@ -9,5 +9,7 @@ app.component("evaEventInfo", {
 });
 
 app.controller("InfoController", function () {
-
+    this.infoValue = () =>{
+        this.infovalue = !this.infovalue;
+    }
 });

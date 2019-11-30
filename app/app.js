@@ -19,8 +19,7 @@ app.config(function($logProvider, $compileProvider, $mdAriaProvider, $qProvider)
 // light-green, lime, yellow, amber, orange, deep-orange, brown, grey, blue-grey
 app.config(function($mdThemingProvider) {
     $mdThemingProvider.theme("default")
-        .primaryPalette("pink")
-        .accentPalette("deep-orange");
+        .primaryPalette("grey")
 });
 
 

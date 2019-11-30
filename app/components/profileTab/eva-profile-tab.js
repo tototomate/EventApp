@@ -10,6 +10,7 @@ app.component("evaProfileTab",{
 
 
 app.controller("ProfileController", function($scope){
+
     $scope.profileSrc = "images/logo-eva-4.png";
     $scope.profileName= "triff.";
     $scope.eventcount= 4;

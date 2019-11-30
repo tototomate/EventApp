@@ -1,6 +1,6 @@
 <style type="text/css">
 
-    eva-event-info:last-child{
+    eva-event-info:last-child {
         margin-bottom: 5em;
     }
 
@@ -10,82 +10,146 @@
         text-align: center;
         padding: 15px 2em 15px 2em;
     }
+    div#eventAll{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+
 
     eva-event-info .event-info-img {
         border-radius: 25px;
 
-        box-shadow: 0px 0px 62px -7px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
         max-height: 300px;
         max-width: 300px;
         border: 1px solid black;
     }
 
     eva-event-info .event-info-content {
-        height:100%;
-        background: linear-gradient(to bottom,black,darkgrey,white);
+        height: 100%;
+        background: linear-gradient(to bottom, black, darkgrey, white);
         border-radius: 25px;
-        box-shadow: 0px 0px 62px -7px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
         border: 1px solid black;
     }
 
-    eva-event-info .image-container{
+    eva-event-info .image-container {
         text-align: center;
         vertical-align: middle;
         display: table-cell;
     }
-    eva-event-info .veranstalter-txt {
+
+    h1.veranstalter-txt {
         color: #721c24;
         font-size: 20px;
         font-family: "Microsoft YaHei UI Light";
     }
+
     eva-event-info .eventDescription {
         visibility: hidden;
     }
-    eva-event-info{
+    /*
+    a {
         transition: transform 1s;
         transition-timing-function: ease-out;
     }
-    eva-event-info:hover{
+
+    a:hover {
         transform: scale(1.05);
     }
-    a:hover{
+
+    a:hover {
         text-decoration: none;
+    }*/
+
+
+
+    div#info {
+        max-width: 300px;
+        border-radius: 25px;
+        background: linear-gradient(to bottom, white, darkgrey, white);
+        box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
+        padding:0px;
     }
 
-    @media (min-width: 600px){
+    div#info{
+        padding:5px;
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+    div#info div#map{
+        text-align: center;
+    }
+
+    @media (min-width: 600px) {
         eva-event-info .event-info-img {
             max-height: 500px;
             max-width: 500px;
         }
-        eva-event-info .event{
+        div#info{
+            max-width: 500px;
+        }
+
+        eva-event-info .event {
             padding-top: 20px;
             padding-bottom: 20px;
         }
     }
-    @media (min-width: 960px){
+
+    @media (min-width: 960px) {
         eva-event-info .event-info-img {
             max-height: 600px;
             max-width: 600px;
         }
-        eva-event-info .event{
+        div#info{
+            max-width: 600px;
+        }
+
+        eva-event-info .event {
             padding-top: 30px;
             padding-bottom: 30px;
         }
     }
 </style>
+<div id="eventAll" layout="column" layout-align="center center">
+    <a class="event" ng-click="$ctrl.infoValue()" ng-controller="InfoController">
+        <div class="event-info-content">
+            <div class="image-container">
+                <img src="images/event-temp.jpg" class="event-info-img">
+            </div>
 
-<a class="event" href="#!/evaEventFullInfo" ng-controller="InfoController">
-    <div class="event-info-content">
-        <div class="image-container">
-            <img src="images/event-temp.jpg" class="event-info-img">
+            <div class="container" layout="row" layout-align="space-around">
+                <p hidden class="eventDescription">{{$ctrl.eventInfo}}</p>
+                <h1 class="veranstalter-txt">
+                    <i class="material-icons">bubble_chart</i>
+                    {{$ctrl.title}}
+                </h1>
+            </div>
         </div>
+    </a>
+    <div id="info" ng-show="$ctrl.infovalue">
+        <div id="map">
+            <p>
+                MAP
+            </p>
 
-        <div class="container" layout="row" layout-align="space-around">
-            <p hidden class="eventDescription">{{$ctrl.eventInfo}}</p>
-            <h1 class="veranstalter-txt">
-                <i class="material-icons">bubble_chart</i>
-                {{$ctrl.title}}
-            </h1>
+        </div>
+        <div id="buttons" layout="row" layout-align="space-between center">
+            <md-button class="md-fab md-primary" aria-label="Yes">
+                <md-icon md-svg-src="images/check-24px.svg"></md-icon>
+            </md-button>
+            <md-button class="md-fab md-primary" aria-label="No">
+                <md-icon md-svg-src="images/not_interested-24px.svg"></md-icon>
+            </md-button>
+            <md-button class="md-fab md-primary" aria-label="Interested">
+                <md-icon md-svg-src="images/heart-shape.svg"></md-icon>
+            </md-button>
+        </div>
+        <div id="eventinfo">
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore
+                et dolore magna aliquyam erat.</p>
         </div>
     </div>
-</a>
+</div>
