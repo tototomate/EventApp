@@ -10,11 +10,11 @@
         text-align: center;
         padding: 15px 2em 15px 2em;
     }
-    div#eventAll{
+
+    div#eventAll {
         padding-top: 10px;
         padding-bottom: 10px;
     }
-
 
 
     eva-event-info .event-info-img {
@@ -49,6 +49,7 @@
     eva-event-info .eventDescription {
         visibility: hidden;
     }
+
     /*
     a {
         transition: transform 1s;
@@ -64,21 +65,21 @@
     }*/
 
 
-
     div#info {
         max-width: 300px;
         border-radius: 25px;
         background: linear-gradient(to bottom, white, darkgrey, white);
         box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
-        padding:0px;
+        padding: 0px;
     }
 
-    div#info{
-        padding:5px;
+    div#info {
+        padding: 5px;
         padding-top: 0px;
         margin-top: 0px;
     }
-    div#info div#map{
+
+    div#info div#map {
         text-align: center;
     }
 
@@ -87,7 +88,8 @@
             max-height: 500px;
             max-width: 500px;
         }
-        div#info{
+
+        div#info {
             max-width: 500px;
         }
 
@@ -102,7 +104,8 @@
             max-height: 600px;
             max-width: 600px;
         }
-        div#info{
+
+        div#info {
             max-width: 600px;
         }
 
@@ -153,3 +156,24 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    let ajax = angular.module('ajax', []);
+
+    ajax.controller('mainController', ['$scope','$http', function ($scope, $http) {
+
+        $http({
+
+            method: 'get',
+            url: 'eva-header.php'
+
+        }).then(function (response) {
+            console.log(response);
+        }, function (response) {
+
+        });
+
+    }]);
+
+</script>

@@ -47,11 +47,11 @@
 </style>
 
 
-<div class="header" layout="row" layout-align="start center">
+<form class="header" layout="row" layout-align="start center" action="index.html#!/evaEventTab" method="post">
 
 
     <div class="searchBar">
-        <input type="text" Placeholder="Suche" flex>
+        <input id="a" name="suchbegriff" type="text" Placeholder="Suche" onkeydown="pressed(event)" flex>
     </div>
     <div class="filter1">
         <select ng-model="$ctrl.filter1" ng-change="$ctrl.eventfilter()">
@@ -64,4 +64,28 @@
         </select>
     </div>
 
-</div>
+</form>
+
+
+
+<script>
+    function pressed(e) {
+        if ( (window.event ? event.keyCode : e.which) === 13) {
+            document.forms[0].submit();
+            let ajax = angular.module('ajax', []);
+
+            ajax.controller('mainController', ['$scope','$http', function ($scope, $http) {
+                $http({
+                    method: 'post',
+                    url: 'eva-header.php',
+                    data: document.getElementById('a').value
+                }).then(function successCallback(response) {
+                    // Store response data
+                    $scope.users = response.data;
+                });
+            }]);
+
+        }
+    }
+</script>
+
