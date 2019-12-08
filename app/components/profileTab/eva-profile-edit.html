@@ -1,0 +1,133 @@
+
+<div class="md-dialog-container" ng-controller="ProfileEditController">
+    <md-dialog flex="50">
+        <div layout="column" layout-align="center center">
+            <form name="PictureForm" method="post" enctype="multipart/form-data">
+                <div layout="row" layout-align="center center">
+                    <md-button name="datei" ng-hide="changePictureValue" type="file" ng-click="changePicture()"
+                               style="padding:10px;width:100%;text-align: center">Profilbild ändern
+                    </md-button>
+                    <md-button class="md-raised md-warn" ng-show="changePictureValue" ng-click="nochangePicture()">
+                        Abbrechen
+                    </md-button>
+                    <md-button class="md-raised " ng-show="changePictureValue"
+                               ng-click="submitPictureForm()">
+                        Speichern
+                    </md-button>
+                </div>
+                <md-whiteframe style="padding: 20px;" class="md-whiteframe-1dp" ng-show="changePictureValue">
+                    <input style="padding:20px;" name="datei" type="file">
+                </md-whiteframe>
+            </form>
+            <form name="UsernameForm" method="get">
+                <div layout="row" layout-align="center center">
+                    <md-button ng-hide="changeUsernameValue" ng-click="changeUsername()"
+                               style="padding:10px;width:100%;text-align: center">
+                        Benutzername
+                        ändern
+                    </md-button>
+                    <md-button class="md-raised md-warn" ng-show="changeUsernameValue"
+                               ng-click="nochangeUsername()">
+                        Abbrechen
+                    </md-button>
+                    <md-button class="md-raised " ng-show="changeUsernameValue"
+                               ng-click="submitUsernameForm()">
+                        Speichern
+                    </md-button>
+                </div>
+                <md-whiteframe style="padding: 20px;padding-top: 30px;" class="md-whiteframe-1dp" ng-show="changeUsernameValue">
+                    <md-input-container>
+                        <label>Benutzername</label>
+                        <input style="padding:20px;" type="text" name="UsernameForm.username" ng-model="UsernameForm.username">
+                        <div ng-messages="UsernameForm.username.$error">
+                            <div ng-message="required">Benutzername ist ein Pflichtfeld.</div>
+                        </div>
+                    </md-input-container>
+                </md-whiteframe>
+            </form>
+            <form name="PasswordForm" method="get">
+                <div layout="row" layout-align="center center">
+                    <md-button ng-click="changePassword()" ng-hide="changePasswordValue"
+                               style="padding:10px;width:100%;text-align: center">Passwort
+                        ändern
+                    </md-button>
+
+                    <md-button class="md-raised md-warn" ng-show="changePasswordValue"
+                               ng-click="nochangePassword()">
+                        Abbrechen
+                    </md-button>
+                    <md-button class="md-raised" ng-show="changePasswordValue"
+                               ng-click="submitPasswordForm()">
+                        Speichern
+                    </md-button>
+                </div>
+                <md-whiteframe  style="padding: 10px;padding-top: 10px;" class="md-whiteframe-1dp" layout="row" layout-align="center center" layout-lt-md="column" ng-show="changePasswordValue">
+                    <md-input-container>
+                        <label>Passwort</label>
+                        <input style="padding:20px;" type="password"
+                               ng-model="password"
+                               name="PasswordForm.password"
+                               required>
+                        <div ng-messages="PasswordForm.password.$error">
+                            <div ng-message="required">
+                                Passwort ist ein Pflichtfeld!
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Passwort nochmals</label>
+                        <input style="padding:20px;" type="password"
+                               ng-model="password2"
+                               ng-pattern="escape(password)"
+                               name="password2"
+                               required>
+                        <div ng-messages="PasswordForm.password2.$error">
+                            <div ng-message="required">
+                                Passwort ist ein Pflichtfeld!
+                            </div>
+                            <div ng-message="pattern">
+                                Passwörter müssen übereinstimmen.
+                            </div>
+                        </div>
+                    </md-input-container>
+                </md-whiteframe>
+            </form>
+            <form name="DescriptionForm">
+                <div layout="row" layout-align="center center">
+                    <md-button ng-click="changeDescription()" ng-hide="changeDescriptionValue" style="padding:10px;width:100%;text-align: center">
+                        Profilbeschreibung ändern
+                    </md-button>
+                    <md-button class="md-raised md-warn" ng-show="changeDescriptionValue"
+                               ng-click="nochangeDescription()">Abbrechen
+                    </md-button>
+                    <md-button class="md-raised " ng-show="changeDescriptionValue"
+                               ng-click="submitDescriptionForm()">
+                        Speichern
+                    </md-button>
+                </div>
+                    <div ng-show="changeDescriptionValue" layout="column" layout-align="center center">
+                        <label>Profilbeschreibung</label>
+                        <textarea  rows="4" cols="50" name="description" col="5"  name="DescriptionForm.username" ng-model="DescriptionForm.username"></textarea>
+                    </div>
+            </form>
+            <!--<input type="area" rows="4" cols="50"></md-button>-->
+            <form name="TokenForm">
+                <div layout="row" layout-align="center center">
+                    <md-button ng-click="getToken()" ng-hide="getTokenValue" style="padding:10px;width:100%;text-align: center">
+                        Verifierzungtoken anfordern
+                    </md-button>
+                    <md-button class="md-raised md-warn" ng-show="getTokenValue" ng-click="nogetToken()">Abbrechen
+                    </md-button>
+                    <md-button class="md-raised " ng-show="getTokenValue"
+                               ng-click="submitTokenForm()">
+                        Speichern
+                    </md-button>
+                </div>
+                <md-button ng-show="getTokenValue" aria-label="Berechtigung für die Erstellung öffentlicher Events"
+                           class="md-themed md-warn">Anfordern
+                </md-button>
+            </form>
+        </div>
+    </md-dialog>
+</div>

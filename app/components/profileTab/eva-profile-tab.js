@@ -9,8 +9,8 @@ app.component("evaProfileTab",{
 });
 
 
-app.controller("ProfileController", function($scope){
-
+app.controller("ProfileController", function($log,$scope,DialogService){
+    $log.debug("ProfileController");
     $scope.profileSrc = "images/logo-eva-4.png";
     $scope.profileName= "triff.";
     $scope.eventcount= 4;
@@ -21,4 +21,10 @@ app.controller("ProfileController", function($scope){
         "prestige","Moritzevent","Fabianevent"];
     /*Alle erstellten Events aufgelistet*/
     /*$scope.events*/
+
+    $scope.changeProfileSettings = function(){
+        DialogService.show("eva-profile-edit").then(changes =>{
+
+        });
+    }
 });

@@ -77,7 +77,8 @@
     div eva-event-info.eva-event-info:hover {
     scale(1.1);
     }
-    eva-event-info div#info{
+
+    eva-event-info div#info {
         color: #721c24;
     }
 
@@ -137,7 +138,7 @@
 </style>
 
 
-<div class="profileContent" layout="row" layout="center center">
+<div class="profileContent" layout="row" layout="center center" ng-controller="ProfileController">
     <div class="centerEverything">
         <div class="head" layout="row" layout="space-between">
             <div id="profileImgContainer">
@@ -163,7 +164,9 @@
         </div>
         <div class="changeProfileContainer" layout="row" layout-align="space-around center">
             <div class="profileName" layout="row" layout-align="center center" flex><p>@{{profileName}}</p></div>
-            <div class="changeSettings" layout="row" layout-align="center center" flex><p>Profil bearbeiten</p></div>
+            <md-button class="md-raised" ng-click="changeProfileSettings()">
+                <md-icon md-svg-src="images/icons8-einstellungen.svg"></md-icon>
+            </md-button>
         </div>
         <div id="profileDesc">
             <p>{{profileBio}}</p>
@@ -174,8 +177,8 @@
             <eva-event-info class="eva-event-info" ng-repeat="x in events" title="{{ x }}"></eva-event-info>
         </div>
     </div>
+    <eva-profile-edit style="display:none;"></eva-profile-edit>
 </div>
-
 <!--<div class="profileContent col-lg-12">
 
     <div id="profileInfo" class="centered">

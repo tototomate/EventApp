@@ -29,6 +29,7 @@ app.config(function($routeProvider) {
             templateUrl : 'components/trendingEventTab/eva-event-full-info.html',
             controller  : "FullInfoController"
        }).otherwise({
-            redirectTo: "/evaEventTab"
+            redirectTo: "/evaEventTab",
+            controller  : "ProfileController"
    });
 });
