@@ -142,42 +142,42 @@
     <div class="centerEverything">
         <div class="head" layout="row" layout="space-between">
             <div id="profileImgContainer">
-                <img alt="Your Profile Picture" class="profileImg" id="profileImg" src="{{profileSrc}}">
+                <img alt="Your Profile Picture" class="profileImg" id="profileImg" src="{{profileSrc()}}">
             </div>
             <div id="stats" layout="row" layout-align="space-around center" flex>
                 <div layout="column">
-                    <p id="events">{{eventcount}}</p>
+                    <p id="events">{{eventcount()}}</p>
                     <p>Events</p>
                 </div>
                 <div layout="column">
 
-                    <p id="followers">{{followers}}</p>
+                    <p id="followers">{{followers()}}</p>
                     <p>Fans</p>
                 </div>
                 <div layout="column">
 
-                    <p id="following">{{following}}</p>
+                    <p id="following">{{following()}}</p>
                     <p>Abos</p>
                 </div>
             </div>
 
         </div>
         <div class="changeProfileContainer" layout="row" layout-align="space-around center">
-            <div class="profileName" layout="row" layout-align="center center" flex><p>@{{profileName}}</p></div>
+            <div class="profileName" layout="row" layout-align="center center" flex><p>@{{profileName()}}</p></div>
             <md-button class="md-raised" ng-click="changeProfileSettings()">
                 <md-icon md-svg-src="images/icons8-einstellungen.svg"></md-icon>
             </md-button>
         </div>
         <div id="profileDesc">
-            <p>{{profileBio}}</p>
+            <p>{{profileBio()}}</p>
         </div>
 
         <div layout="column" layout-align="center center">
             <!-- Neue Komponente Event Display-->
-            <eva-event-info class="eva-event-info" ng-repeat="x in events" title="{{ x }}"></eva-event-info>
+            <eva-event-info class="eva-event-info" ng-repeat="event in events()" event="event"></eva-event-info>
         </div>
     </div>
-    <eva-profile-edit style="display:none;"></eva-profile-edit>
+    <eva-profile-edit style="display:none;" ></eva-profile-edit>
 </div>
 <!--<div class="profileContent col-lg-12">
 

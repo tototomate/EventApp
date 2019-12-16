@@ -8,7 +8,8 @@ app.component("evaEventTab", {
     }
 });
 
-app.controller("EventController", function ($scope) {
-    $scope.veranstalter = ["Notorious",
-        "prestige","Moritzevent","Fabianevent","Cooles Event"];
+app.controller("EventController", function ($scope,eventService) {
+    $scope.events = () =>{
+        return eventService.events;
+    }
 });

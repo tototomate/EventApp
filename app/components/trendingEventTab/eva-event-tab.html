@@ -9,5 +9,5 @@
 
 <div id="events" layout="column" layout-align="center center">
     <!-- Neue Komponente Event Display-->
-    <eva-event-info class="eva-event-info" ng-repeat="x in veranstalter" title="{{ x }}"></eva-event-info>
+    <eva-event-info class="eva-event-info" ng-repeat="event in events()" event=" event "></eva-event-info>
 </div>

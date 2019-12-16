@@ -1,17 +1,19 @@
 app.component("evaProfileEdit", {
     templateUrl: "components/profileTab/eva-profile-edit.html",
     controller: "ProfileEditController",
-    bindings: {}
+    bindings: {
+        description: '&'
+    }
 });
 
-app.controller("ProfileEditController", function ($log, $scope, DialogService) {
+app.controller("ProfileEditController", function ($log, $scope, DialogService,userService) {
     $log.debug("ProfileEditController");
     this.save = () => {
         DialogService.submit();
-    }
+    };
     this.cancel = () => {
         DialogService.cancel();
-    }
+    };
 
 
     $scope.escape = (text) => {
@@ -54,5 +56,38 @@ app.controller("ProfileEditController", function ($log, $scope, DialogService) {
     };
     $scope.saveable = () => {
         return (this.changeUsernameValue || this.changePasswordValue || this.changePictureValue || this.changeDescriptionValue || this.getTokenValue);
+    };
+
+    $scope.submitDescriptionForm = () =>{
+        /*console.log($scope.DescriptionForm.descriptionvalue);
+
+         */
+        userService.profileBio = $scope.DescriptionForm.descriptionvalue;
+        $scope.changeDescriptionValue = false;
+        $scope.DescriptionForm.descriptionvalue = "";
+
+    };
+    $scope.submitPasswordForm = () =>{
+
+        /* Backendzeugs */
+
+    };
+    $scope.submitTokenForm = () =>{
+
+        /* Backendzeugs */
+    };
+    $scope.submitUsernameForm = () =>{
+        /*console.log($scope.UsernameForm.usernamevalue);
+
+         */
+        userService.profileName = $scope.UsernameForm.usernamevalue;
+        $scope.changeUsernameValue = false;
+        $scope.UsernameForm.usernamevalue = "";
+    };
+    $scope.submitPictureForm = () =>{
+        console.log($scope.PictureForm.dateivalue);
+        userService.profileSrc = $scope.PictureForm.dateivalue;
+        $scope.changePictureValue = false;
+        $scope.PictureForm.dateivalue = "";
     }
 });
