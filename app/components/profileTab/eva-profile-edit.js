@@ -6,7 +6,7 @@ app.component("evaProfileEdit", {
     }
 });
 
-app.controller("ProfileEditController", function ($log, $scope, DialogService,userService) {
+app.controller("ProfileEditController", function ($log, $scope, DialogService, userService) {
     $log.debug("ProfileEditController");
     this.save = () => {
         DialogService.submit();
@@ -35,9 +35,6 @@ app.controller("ProfileEditController", function ($log, $scope, DialogService,us
     $scope.changeDescription = () => {
         $scope.changeDescriptionValue = true;
     };
-    $scope.getToken = () => {
-        $scope.getTokenValue = true;
-    };
 
     $scope.nochangePicture = () => {
         $scope.changePictureValue = false;
@@ -51,14 +48,11 @@ app.controller("ProfileEditController", function ($log, $scope, DialogService,us
     $scope.nochangeDescription = () => {
         $scope.changeDescriptionValue = false;
     };
-    $scope.nogetToken = () => {
-        $scope.getTokenValue = false;
-    };
     $scope.saveable = () => {
-        return (this.changeUsernameValue || this.changePasswordValue || this.changePictureValue || this.changeDescriptionValue || this.getTokenValue);
+        return (this.changeUsernameValue || this.changePasswordValue || this.changePictureValue || this.changeDescriptionValue);
     };
 
-    $scope.submitDescriptionForm = () =>{
+    $scope.submitDescriptionForm = () => {
         /*console.log($scope.DescriptionForm.descriptionvalue);
 
          */
@@ -67,24 +61,47 @@ app.controller("ProfileEditController", function ($log, $scope, DialogService,us
         $scope.DescriptionForm.descriptionvalue = "";
 
     };
-    $scope.submitPasswordForm = () =>{
+    $scope.submitPasswordForm = () => {
 
-        /* Backendzeugs */
+        let formData = new FormData();
+        formData.append("password", $scope.PasswordForm.password);
+
+        let request = new XMLHttpRequest();
+
+        event.preventDefault();
+
+        request.addEventListener("load", function reqListener(){
+            console.log(this.responseText)
+        });
+        request.open("POST", "components/profileTab/eva-profile-edit.php");
+        request.send(formData);
 
     };
-    $scope.submitTokenForm = () =>{
+    $scope.submitTokenForm = () => {
 
         /* Backendzeugs */
     };
-    $scope.submitUsernameForm = () =>{
-        /*console.log($scope.UsernameForm.usernamevalue);
+    $scope.submitUsernameForm = () => {
 
-         */
+        let formData = new FormData();
+        formData.append("username", $scope.UsernameForm.usernamevalue);
+
+        let request = new XMLHttpRequest();
+
+        event.preventDefault();
+
+        request.addEventListener("load", function reqListener(){
+            console.log(this.responseText)
+        });
+        request.open("POST", "components/profileTab/eva-profile-edit.php");
+        request.send(formData);
+
+
         userService.profileName = $scope.UsernameForm.usernamevalue;
         $scope.changeUsernameValue = false;
         $scope.UsernameForm.usernamevalue = "";
     };
-    $scope.submitPictureForm = () =>{
+    $scope.submitPictureForm = () => {
         console.log($scope.PictureForm.dateivalue);
         userService.profileSrc = $scope.PictureForm.dateivalue;
         $scope.changePictureValue = false;

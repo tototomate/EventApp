@@ -32,6 +32,9 @@ app.controller("ProfileController", function ($log, $scope, DialogService, userS
         return userService.events;
     };
 
+    $scope.logout = () => {
+        window.location = "/treffpunk_aftermerge/logout.php";
+    };
 
     $scope.changeProfileSettings = function () {
         DialogService.show("eva-profile-edit").then(changes => {
