@@ -16,6 +16,13 @@ app.controller("HeaderController",function($scope){
         angular.element(previous).removeClass("focus-opt");
         angular.element($event.currentTarget).addClass('focus-opt');
 
+        if(category === 0){
+            $scope.eventsearch = false;
+
+        }else{
+            $scope.eventsearch = true;
+        }
+
         let transmitCategory = category;
 
     };
