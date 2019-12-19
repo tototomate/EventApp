@@ -8,8 +8,7 @@
     }
 
     .centerEverything {
-        max-width: 300px;
-        margin:0em;
+        margin: 0em;
     }
 
     div.changeProfileContainer div p {
@@ -69,17 +68,25 @@
         height: 200px;
         border-radius: 50%;
         border: 5px white solid;
-        margin: 5px;
     }
 
-    .eva-event-info:last-child {
-        padding-bottom: 5em;
+    #profileImgContainer {
+        margin: 10px;
+    }
+
+    div eva-event-info.eva-event-info:hover {
+    scale(1.1);
+    }
+
+    eva-event-info div#info {
+        color: #721c24;
     }
 
     @media (min-width: 960px) {
-        .centerEverything{
+        .centerEverything {
             max-width: 500px;
         }
+
         #profileImg {
             width: 200px;
             height: 200px;
@@ -94,6 +101,7 @@
             font-size: 1.2em;
         }
     }
+
 
     @media (max-width: 600px) {
         #profileImg {
@@ -113,13 +121,15 @@
             font-size: 1em;
         }
     }
-    @media (min-width: 600px){
-        .centerEverything{
+
+    @media (min-width: 600px) {
+        .centerEverything {
             max-width: 500px;
         }
     }
-    @media (min-width: 960px){
-        .centerEverything{
+
+    @media (min-width: 960px) {
+        .centerEverything {
             max-width: 600px;
         }
     }
@@ -128,44 +138,47 @@
 </style>
 
 
-<div class="profileContent" layout="row" layout="center center">
+<div class="profileContent" layout="row" layout="center center" ng-controller="ProfileController">
     <div class="centerEverything">
         <div class="head" layout="row" layout="space-between">
             <div id="profileImgContainer">
-                <img alt="Your Profile Picture" class="profileImg" id="profileImg" src="{{profileSrc}}">
+                <img alt="Your Profile Picture" class="profileImg" id="profileImg" src="{{profileSrc()}}">
             </div>
             <div id="stats" layout="row" layout-align="space-around center" flex>
                 <div layout="column">
-                    <p id="events">{{eventcount}}</p>
+                    <p id="events">{{eventcount()}}</p>
                     <p>Events</p>
                 </div>
                 <div layout="column">
 
-                    <p id="followers">{{followers}}</p>
+                    <p id="followers">{{followers()}}</p>
                     <p>Fans</p>
                 </div>
                 <div layout="column">
 
-                    <p id="following">{{following}}</p>
+                    <p id="following">{{following()}}</p>
                     <p>Abos</p>
                 </div>
             </div>
 
         </div>
         <div class="changeProfileContainer" layout="row" layout-align="space-around center">
-            <div class="profileName" layout="row" layout-align="center center" flex><p>@{{profileName}}</p></div>
-            <div class="changeSettings" layout="row" layout-align="center center" flex><p>Profil bearbeiten</p></div>
+            <div class="profileName" layout="row" layout-align="center center" flex><p>@{{profileName()}}</p></div>
+            <md-button class="md-raised" ng-click="changeProfileSettings()">
+                <md-icon md-svg-src="images/icons8-einstellungen.svg"></md-icon>
+            </md-button>
         </div>
         <div id="profileDesc">
-            <p>{{profileBio}}</p>
+            <p>{{profileBio()}}</p>
         </div>
 
-        <div class="eva-event-info">
-            <eva-event-info ng-repeat="y in events" title="{{y}}"></eva-event-info>
+        <div layout="column" layout-align="center center">
+            <!-- Neue Komponente Event Display-->
+            <eva-event-info class="eva-event-info" ng-repeat="event in events()" event="event"></eva-event-info>
         </div>
     </div>
+    <eva-profile-edit style="display:none;" ></eva-profile-edit>
 </div>
-
 <!--<div class="profileContent col-lg-12">
 
     <div id="profileInfo" class="centered">

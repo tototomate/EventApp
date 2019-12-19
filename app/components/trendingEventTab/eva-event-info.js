@@ -4,10 +4,18 @@ app.component("evaEventInfo", {
     templateUrl: "components/trendingEventTab/eva-event-info.html",
     controller: "InfoController",
     bindings: {
-        title: '@'
+        event: '<'
     }
 });
 
-app.controller("InfoController", function () {
-    this.eventInfo = "Lorem Ipsum ipsum lorenz";
+app.controller("InfoController", function ($log) {
+    $log.debug("InfoController");
+
+    this.infoValue = () =>{
+
+        console.log(this.event);
+        console.log(this.event);
+        console.log("Trigger");
+        this.infovalue = !this.infovalue;
+    }
 });

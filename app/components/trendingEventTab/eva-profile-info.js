@@ -9,6 +9,7 @@ app.component("evaProfileInfo", {
         u_events_created: '@',
         u_fans: '@',
         u_abos: '@'
+
     }
 });
 

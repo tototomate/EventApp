@@ -1,11 +1,123 @@
 <style type="text/css">
-    #events {
-        background: blueviolet;
-        width: 100vw;
-        height: 100vh;
+
+    .event {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: 15px 2em 15px 2em;
+    }
+
+    .event-info-content {
+        height: 100%;
+        background: linear-gradient(to bottom, black, darkgrey, white);
+        border-radius: 15px;
+        box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
+        border: 1px solid black;
+    }
+
+    @media (min-width: 600px) {
+        .event {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    @media (min-width: 960px) {
+        .event {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
+
+    #datum, #entfernung, #filter, #suche {
+        border-radius: 15px;
+        width: 350px;
+        margin-bottom: 7px;
+
+    }
+
+    #entfernung, #datum, #filter {
+        padding: 5px 5px 5px 10px;
+    }
+
+    div.searchBar input[placeholder] {
+        padding: 5px 5px 5px 35px;
+    }
+
+    #searchicon {
+        position: absolute;
+        padding: 8px 5px 5px 290px;
+    }
+
+    #optionsicon {
+        position: absolute;
+        padding: 8px 5px 5px 10px;
+    }
+
+    #clearicon {
+        position: absolute;
+        padding: 8px 5px 5px 320px;
     }
 </style>
+<script type="text/javascript">
 
-<div id="testDiv">
+    function selectDay() {
+        // Get date and then the current day
+        var cur_date = new Date();
+        var day = cur_date.getDate();
 
+        // Get a reference to the drop down
+        var selectDayControl = document.getElementById("day");
+
+        // Loop through the options of that drop down comparing the value of the option
+        // against the current day we stored. If they are equal, set that option to be selected.
+        for (i = 0; i < selectDayControl.options.length; i++) {
+            if (selectDayControl.options[i].value == day) {
+                selectDayControl.options[i].selected = true;
+                return;
+            }
+        }
+    }
+</script>
+<div id="map">
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = {lat: -25.344, lng: 131.036};
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 4, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVIHKn9vpmu2cadDWkr4YlehErlWuilJM&callback=initMap">
+    </script>
+</div>
+<div class="event" ng-controller="InfoController">
+    <div class="event-info-content" layout="column">
+        <div class="searchBar" layout="row">
+            <i class="material-icons" id="optionsicon">view_headline</i>
+            <input type="text" Placeholder="Suche" id="suche" flex>
+            <i class="material-icons" id="searchicon">search</i>
+            <i class="material-icons" id="clearicon">clear</i>
+        </div>
+        <select id="entfernung">
+            <option selected disabled>Entfernung</option>
+            <option value="1km">1km</option>
+            <option value="2km">2km</option>
+            <option value="5km">5km</option>
+            <option value="10km">10km</option>
+        </select>
+        <input type="date" id="datum">
+        <select id="filter">
+            <option selected disabled>Mehr Filter</option>
+            <option value="filter1">Filter1</option>
+            <option value="filter2">Filter2</option>
+            <option value="filter3">Filter3</option>
+            <option value="filter4">Filter4</option>
+        </select>
+    </div>
 </div>
