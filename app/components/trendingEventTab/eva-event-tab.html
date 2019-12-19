@@ -7,11 +7,21 @@
     .eva-event-info:first-child {
         padding-top:5em;
     }
+
+    .eva-profile-info:last-child {
+        padding-bottom: 7px;
+    }
+
+    .eva-profile-info:first-child {
+        padding-top:8em;
+    }
 </style>
 
 <eva-header class="fixed-top"></eva-header>
 
 <div id="events" layout="column" layout-align="center center">
     <!-- Neue Komponente Event Display-->
-    <eva-event-info class="eva-event-info" ng-repeat="x in veranstalter" title="{{ x }}"></eva-event-info>
+    <eva-profile-info class="eva-profile-info" ng-repeat="u in userSearchResults" u_name="{{name}}" u_img="{{profile_pic}}" u_events_created="{{events_created}}" u_fans="{{fans}}" u_abos="{{abos}}"></eva-profile-info>
+
+    <eva-event-info class="eva-event-info" ng-repeat="x in veranstalter" title="{{x}}"></eva-event-info>
 </div>
