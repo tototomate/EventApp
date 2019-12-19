@@ -12,13 +12,14 @@
     }
 
     div#eventAll {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 500px;
     }
 
 
     eva-event-info .event-info-img {
-        border-radius: 25px;
 
         box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
         max-height: 300px;
@@ -28,16 +29,30 @@
 
     eva-event-info .event-info-content {
         height: 100%;
-        background: linear-gradient(to bottom, black, darkgrey, white);
-        border-radius: 25px;
-        box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
-        border: 1px solid black;
     }
 
     eva-event-info .image-container {
+        position: relative;
+        z-index: 1;
+        transform: skew(10deg);
+        overflow: hidden;
+        border: 3px solid rgba(125, 34, 146, 0.47);
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(145deg, #c31432, #240b36);
         text-align: center;
         vertical-align: middle;
         display: table-cell;
+        -webkit-transition: opacity 1s ease-in-out;
+        -moz-transition: opacity 1s ease-in-out;
+        -o-transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .event-info-img {
+        transform: scale(0.9);
+        transform: skew(-10deg);
+        -webkit-transform: skew(-10deg) scale(1.13);
+
     }
 
     h1.veranstalter-txt {
@@ -66,11 +81,22 @@
 
 
     div#info {
+        position: relative;
+        top: -280px;
+        z-index: 0;
+        border: 3px solid rgba(125, 34, 146, 0.47);
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(145deg, #c31432, #240b36);
         max-width: 300px;
-        border-radius: 25px;
-        background: linear-gradient(to bottom, white, darkgrey, white);
+        max-height: 300px;
+        background: white;
+        transform: skew(10deg);
         box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
         padding: 0px;
+        -webkit-transition: opacity 1s ease-in-out;
+        -moz-transition: opacity 1s ease-in-out;
+        -o-transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out;
     }
 
     div#info {
@@ -81,6 +107,16 @@
 
     div#info div#map {
         text-align: center;
+        transform: skew(-10deg);
+    }
+
+    div#buttons {
+        transform: skew(-10deg);
+    }
+
+    div#eventinfo {
+        font-size: 0.9em;
+        padding: 2px;
     }
 
     @media (min-width: 600px) {
@@ -114,6 +150,15 @@
             padding-bottom: 30px;
         }
     }
+
+    .image-container:hover{
+        z-index: 1;
+    }
+
+    #info:hover{
+        z-index: 1;
+    }
+
 </style>
 <div id="eventAll" layout="column" layout-align="center center">
     <a class="event" ng-click="$ctrl.infoValue()" ng-controller="InfoController">
@@ -124,18 +169,16 @@
 
             <div class="container" layout="row" layout-align="space-around">
                 <p hidden class="eventDescription">{{$ctrl.eventInfo}}</p>
-                <h1 class="veranstalter-txt">
-                    <i class="material-icons">bubble_chart</i>
-                    {{$ctrl.event.name}}
-                </h1>
+
             </div>
         </div>
     </a>
-    <div id="info" ng-show="$ctrl.infovalue">
+    <div id="info">
         <div id="map">
-            <p>
-                MAP
-            </p>
+            <h1 class="veranstalter-txt">
+                <i class="material-icons">bubble_chart</i>
+                {{$ctrl.event.name}}
+            </h1>
 
         </div>
         <div id="buttons" layout="row" layout-align="space-between center">
@@ -161,7 +204,9 @@
 <script>
     let ajax = angular.module('ajax', []);
 
-    ajax.controller('mainController', ['$scope','$http', function ($scope, $http) {
+    ajax
+
+    roller('mainController', ['$scope','$http', function ($scope, $http) {
 
         $http({
 
