@@ -4,17 +4,14 @@ app.component("evaProfileInfo", {
     templateUrl: "components/trendingEventTab/eva-profile-info.html",
     controller: "ProfileInfoController",
     bindings: {
-        u_name: '@',
-        u_img: '@',
-        u_events_created: '@',
-        u_fans: '@',
-        u_abos: '@'
+        user: '<'
 
     }
 });
 
-app.controller("ProfileInfoController", function ($scope) {
-
+app.controller("ProfileInfoController", function ($log,$scope) {
+    $log.debug("ProfileInfoController");
+    console.log(user);
 });
 
 

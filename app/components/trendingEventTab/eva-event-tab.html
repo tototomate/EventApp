@@ -21,7 +21,7 @@
 
 <div id="events" layout="column" layout-align="center center">
     <!-- Neue Komponente Event Display-->
-    <eva-profile-info class="eva-profile-info" ng-repeat="u in userSearchResults" u_name="{{name}}" u_img="{{profile_pic}}" u_events_created="{{events_created}}" u_fans="{{fans}}" u_abos="{{abos}}"></eva-profile-info>
+    <eva-profile-info class="eva-profile-info" ng-repeat="u in users()" user="u"></eva-profile-info>
 
-    <eva-event-info class="eva-event-info" ng-repeat="x in veranstalter" title="{{x}}"></eva-event-info>
+    <eva-event-info class="eva-event-info" ng-repeat="x in veranstalter()" event="x"></eva-event-info>
 </div>
