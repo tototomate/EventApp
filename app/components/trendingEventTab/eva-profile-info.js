@@ -9,9 +9,9 @@ app.component("evaProfileInfo", {
     }
 });
 
-app.controller("ProfileInfoController", function ($log,$scope) {
+app.controller("ProfileInfoController", function ($log) {
     $log.debug("ProfileInfoController");
-    console.log(user);
+
 });
 
 

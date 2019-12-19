@@ -10,7 +10,6 @@ app.component("evaEventTab", {
 
 app.controller("EventController", function ($scope,eventService,usersService,$log) {
     $log.debug("EventController");
-    console.log(usersService.users);
     $scope.veranstalter = ()=>{
         return eventService.events;
     };
