@@ -1,18 +1,17 @@
 app.factory("Event",function(){
 
-
-    function Event(name,location,date,description){
-        /*this.event_id = event_id;
-        this.loc_id = loc_id;*/
+    function Event(image,name,description,location,date,category){
+        this.image = image;
         this.name = name;
+        this.description = description;
         this.location = location;
         this.date = date;
-        this.description = description;
+        this.category = category;
     }
+
     this.getName = ()=>{
         return this.name;
     };
-
 
     return Event;
 });

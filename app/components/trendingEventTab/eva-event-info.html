@@ -12,13 +12,14 @@
     }
 
     div#eventAll {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 0;
+        margin-top: 300px;
     }
 
-
     eva-event-info .event-info-img {
-        border-radius: 25px;
 
         box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
         max-height: 300px;
@@ -28,22 +29,36 @@
 
     eva-event-info .event-info-content {
         height: 100%;
-        background: linear-gradient(to bottom, black, darkgrey, white);
-        border-radius: 25px;
-        box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
-        border: 1px solid black;
     }
 
     eva-event-info .image-container {
+        position: relative;
+        z-index: 1;
+        /*transform: skew(10deg);*/
+        overflow: hidden;
+        border: 3px solid rgba(125, 34, 146, 0.47);
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(145deg, #c31432, #240b36);
         text-align: center;
         vertical-align: middle;
         display: table-cell;
+        -webkit-transition: opacity 1s ease-in-out;
+        -moz-transition: opacity 1s ease-in-out;
+        -o-transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .event-info-img {
+        transform: scale(0.9);
+        transform: skew(-10deg);
+        -webkit-transform: skew(-10deg) scale(1.13);
     }
 
     h1.veranstalter-txt {
-        color: #721c24;
+        color: white;
         font-size: 20px;
         font-family: "Microsoft YaHei UI Light";
+        width: 100%;
     }
 
     eva-event-info .eventDescription {
@@ -66,21 +81,54 @@
 
 
     div#info {
+        width: 100%;
+        padding: 15px;
+        color: white;
+        position: relative;
+        top: -280px;
+        z-index: 0;
+        border: 3px solid rgba(125, 34, 146, 0.47);
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
         max-width: 300px;
-        border-radius: 25px;
-        background: linear-gradient(to bottom, white, darkgrey, white);
+        max-height: 300px;
+        background: linear-gradient(215deg, #c31432, #5c1c8a);
+        /*transform: skew(10deg);*/
         box-shadow: 0px 0px 62px -7px rgba(0, 0, 0, 0.75);
         padding: 0px;
+        -webkit-transition: opacity 1s ease-in-out;
+        -moz-transition: opacity 1s ease-in-out;
+        -o-transition: opacity 1s ease-in-out;
+        transition: opacity 1s ease-in-out;
+       /* background: linear-gradient(to top, #23074d, #cc5333);*/
     }
 
     div#info {
         padding: 5px;
         padding-top: 0px;
         margin-top: 0px;
+        width: 100%;
+        text-align: center;
+    }
+
+    #map {
+        margin: 3px 10px 10px 10px;
+        background: rgba(0, 0, 0, 0.53);
+        border-radius: 10px;
     }
 
     div#info div#map {
         text-align: center;
+        /*transform: skew(-10deg);*/
+    }
+
+    div#buttons {
+        /*transform: skew(-10deg);*/
+    }
+
+    div#eventinfo {
+        font-size: 0.9em;
+        padding: 2px;
+        color: white;
     }
 
     @media (min-width: 600px) {
@@ -114,6 +162,124 @@
             padding-bottom: 30px;
         }
     }
+
+    .image-container:hover{
+        animation-name: opacity-image;
+        animation-duration: 0.5s;
+        z-index: 1;
+    }
+
+    @keyframes opacity-image {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    #info:hover{
+        animation-name: opacity-info;
+        animation-duration: 0.5s;
+        z-index: 1;
+    }
+
+    @keyframes opacity-info {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .event-description {
+        height: 0;
+    }
+
+    .display-text {
+        font-size: 20px;
+    }
+
+    .display-veranstalter {
+        font-size: 20px;
+        padding: 2px        ;
+    }
+
+    .border {
+        color: #ffffff;
+        font-size: 1.2em;
+        font-family: "Microsoft YaHei UI Light";
+        /* box-shadow: 0px 0px 15px 2px black; */
+        padding: 5px;
+        background: rgba(0, 0, 0, 0.56);
+        border-radius: 10px;
+        border: 3px solid rgba(138, 0, 7, 0.65);
+        box-shadow: 0px 0px 10px 3px rgba(75, 0, 2, 0.88);
+    }
+
+    .account_icon {
+
+    }
+
+    #event-location-date > p {
+        border-radius: 15px;
+        color: white;
+        background: linear-gradient(210deg, rgba(169, 169, 169, 0.44), rgba(0, 0, 0, 0.65));
+        padding: 5px;
+        font-size: 20px;
+        box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.59);
+    }
+
+    #event-location-date > p > i {
+        color: darkred;
+    }
+
+    .follow-btn-3 {
+        color: white;
+        width:15vw;
+        height: 15vw;
+        float: left;
+        border-radius: 10px;
+        /* box-shadow: 0px -3px 18px 7px rgba(0, 0, 0, 0.75);*/
+        padding: 2px;
+        background: linear-gradient(215deg, #c31432, #5c1c8a);
+        transform: scale(1.2);
+        box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.67);
+        position: relative;
+    }
+
+    .follow-btn-3:hover {
+        box-shadow: 0px 0px 10px 5px #159000;
+        background: linear-gradient(215deg, #c3aa00, #0d5300);
+    }
+    .follow-btn-3:after {
+        box-shadow: 0px 0px 20px 10px #159000;1wsq
+        background: linear-gradient(215deg, #c3aa00, #0d5300);
+    }
+
+    .follow-btn-4 {
+        color: white;
+        width:15vw;
+        height: 15vw;
+        float: left;
+        border-radius: 10px;
+        /* box-shadow: 0px -3px 18px 7px rgba(0, 0, 0, 0.75);*/
+        padding: 2px;
+        background: linear-gradient(75deg, #c31432, #5c1c8a);
+        transform: scale(1.2);
+        box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.67);
+        position: relative;
+    }
+
+    .follow-btn-4:hover {
+        box-shadow: 0px 0px 10px 5px #001690;
+        background: linear-gradient(215deg, #a70ac3, #0d0053);
+    }
+    .follow-btn-4:after {
+        box-shadow: 0px 0px 10px 5px #001690;
+        background: linear-gradient(215deg, #a70ac3, #0d0053);
+    }
 </style>
 <div id="eventAll" layout="column" layout-align="center center">
     <a class="event" ng-click="$ctrl.infoValue()" ng-controller="InfoController">
@@ -122,46 +288,73 @@
                 <img src="images/event-temp.jpg" class="event-info-img">
             </div>
 
-            <div class="container" layout="row" layout-align="space-around">
+            <div class="container event-description" layout="row" layout-align="space-around">
                 <p hidden class="eventDescription">{{$ctrl.eventInfo}}</p>
-                <h1 class="veranstalter-txt">
-                    <i class="material-icons">bubble_chart</i>
-                    {{$ctrl.event.name}}
-                </h1>
             </div>
         </div>
     </a>
-    <div id="info" ng-show="$ctrl.infovalue">
-        <div id="map">
-            <p>
-                MAP
-            </p>
 
+    <div id="info" layout="column">
+        <!--<div id="unskew">
+            <div id="name-title-display" layout="row" layout-align="space-around">
+                <h1 class="display-text border">{{$ctrl.event.name}}</h1>
+                <h1 class="display-text border">
+                    <i class="material-icons account_icon">account_box</i>
+                    Veranstalter
+                </h1>
+            </div>
+
+            <div id="eventinfo">
+                <p>{{$ctrl.event.description}}</p>
+            </div>
+
+            <div id="detailed-info" layout="row" layout-align="space-around">
+                <h3 class="display-text">
+                    <i class="material-icons account_icon">navigation</i>
+                    {{$ctrl.event.location}}
+                </h3>
+                <h3 class="display-text">
+                    <i class="material-icons account_icon">date_range</i>
+                    {{$ctrl.event.date}}
+                </h3>
+            </div>
+        </div>-->
+                <div id="map" layout="row" layout-align="center center">
+                    <h1 class="veranstalter-txt">
+                        <i class="material-icons">bubble_chart</i>
+                        {{$ctrl.event.type}}
+                    </h1>
+                </div>
+
+                <div id="event-location-date" layout="row" layout-align="space-around">
+                    <p>
+                        <i class="material-icons account_icon">navigation</i>
+                        {{$ctrl.event.location}}
+                    </p>
+                    <p>
+                        <i class="material-icons account_icon">date_range</i>
+                        {{$ctrl.event.date}}
+                    </p>
+                </div>
+
+                <div id="eventinfo">
+                    <p>{{$ctrl.event.description}}</p>
+                </div>
+
+                <div id="buttons" layout="row" layout-align="space-around center">
+                    <md-button class="follow-btn-3">Like</md-button>
+                    <md-button class="follow-btn-4">Account</md-button>
+                </div>
+            </div>
         </div>
-        <div id="buttons" layout="row" layout-align="space-between center">
-            <md-button class="md-fab md-primary" aria-label="Yes">
-                <md-icon md-svg-src="images/check-24px.svg"></md-icon>
-            </md-button>
-            <md-button class="md-fab md-primary" aria-label="No">
-                <md-icon md-svg-src="images/not_interested-24px.svg"></md-icon>
-            </md-button>
-            <md-button class="md-fab md-primary" aria-label="Interested">
-                <md-icon md-svg-src="images/heart-shape.svg"></md-icon>
-            </md-button>
-        </div>
-        <div id="eventinfo">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore
-                et dolore magna aliquyam erat.</p>
-        </div>
-    </div>
-</div>
 
 
 <script>
     let ajax = angular.module('ajax', []);
 
-    ajax.controller('mainController', ['$scope','$http', function ($scope, $http) {
+    ajax
+
+    roller('mainController', ['$scope','$http', function ($scope, $http) {
 
         $http({
 

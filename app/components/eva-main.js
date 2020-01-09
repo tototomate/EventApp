@@ -13,8 +13,8 @@ app.controller("MainController", function ($scope) {
 
 app.config(function($routeProvider) {
    $routeProvider
-       .when('/evaAddTab', {
-           templateUrl : 'components/addEventTab/eva-add-tab.html',
+       .when('/evaAddTabStart', {
+           templateUrl : 'components/addEventTab/eva-add-tab-start.html',
            controller  : "AddController"
        }).when('/evaMapTab', {
            templateUrl : 'components/mapTab/eva-map-tab.html',
@@ -28,6 +28,30 @@ app.config(function($routeProvider) {
        }).when('/evaEventFullInfo', {
             templateUrl : 'components/trendingEventTab/eva-event-full-info.html',
             controller  : "FullInfoController"
+       }).when('/evaAddPic', {
+           templateUrl : 'components/addEventTab/eva-add-pic.html',
+           controller  : "AddPicController"
+       }).when('/evaAddTitle', {
+           templateUrl : 'components/addEventTab/eva-add-title.html',
+           controller  : "AddTitleController"
+       }).when('/evaAddDesc', {
+           templateUrl : 'components/addEventTab/eva-add-desc.html',
+           controller  : "AddDescController"
+       }).when('/evaAddLocation', {
+           templateUrl : 'components/addEventTab/eva-add-location.html',
+           controller  : "AddLocationController"
+       }).when('/evaAddCategory', {
+           templateUrl : 'components/addEventTab/eva-add-category.html',
+           controller  : "AddCategoryController"
+       }).when('/evaAddDate', {
+           templateUrl : 'components/addEventTab/eva-add-date.html',
+           controller  : "AddDateController"
+       }).when('/evaAddTabFinish', {
+           templateUrl : 'components/addEventTab/eva-add-tab-finish.html',
+           controller  : "FinishAddController"
+       }).when('/evaAddTabStart', {
+           templateUrl : 'components/addEventTab/eva-add-tab-start.html',
+           controller  : "StartAddController"
        }).otherwise({
             redirectTo: "/evaEventTab",
             controller  : "ProfileController"

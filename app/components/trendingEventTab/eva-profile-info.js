@@ -5,13 +5,11 @@ app.component("evaProfileInfo", {
     controller: "ProfileInfoController",
     bindings: {
         user: '<'
-
     }
 });
 
-app.controller("ProfileInfoController", function ($log) {
+app.controller("ProfileInfoController", function ($log,$scope) {
     $log.debug("ProfileInfoController");
-
 });
 
 

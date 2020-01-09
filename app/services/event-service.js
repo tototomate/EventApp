@@ -1,6 +1,7 @@
 app.service("eventService",function(Event){
-   this.events = [new Event("Notorious","Wien","13.12.2019","Alkohol, Musik und coole Leute!!!"),
-       new Event("NasichaEvents","Wien","20.10.2019","Na sicher!"),
-       new Event("Plastikmüll","Unterolberndorf","4.1.2020","Plastik überall."),
-       new Event("Weihnachten","Unterolberndorf","24.12.2019","Hohoho... der Weihnachtsmann kommt auch dieses Jahr zu Ihnen. Freuen Sie sich auf viele Geschenke und eine schönen Zeit mit der Familie.")];
+
+   this.events = [new Event("app/images/event-temp.jpg","Notorious","Alkohol, Musik und coole Leute!!!","Wien","13.12.2019","Clubbing"),
+                  new Event("app/images/event-temp.jpg","Na sicher!","NasichaEvents","Wien","20.10.2019","Clubbing"),
+                  new Event("app/images/event-temp.jpg","Plastikmüll","Plastik überall.","Unterolberndorf","4.1.2020","Party"),
+                  new Event("app/images/event-temp.jpg","Weihnachten","Hohoho... der Weihnachtsmann kommt auch dieses Jahr zu Ihnen. Freuen Sie sich auf viele Geschenke und eine schönen Zeit mit der Familie.","Unterolberndorf","24.12.2019","Party")];
 });
