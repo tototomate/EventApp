@@ -11,7 +11,7 @@ app.component("evaAddTabFinish", {
     }
 });
 
-app.controller("FinishAddController", function ($scope,$log,eventService) {
+app.controller("FinishAddController", function ($scope,$log,eventService, Event) {
 
     $scope.image = imageSrc;
     $scope.title = eventTitle;
@@ -20,7 +20,7 @@ app.controller("FinishAddController", function ($scope,$log,eventService) {
     $scope.location = eventLocation;
     $scope.category = eventCategory;
 
-    $scope.createEvent = function () {
+    $scope.createEvent = () =>{
 
         let image = imageSrc;
         let title = eventTitle;
