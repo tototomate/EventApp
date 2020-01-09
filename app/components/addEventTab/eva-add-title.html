@@ -1,0 +1,167 @@
+<style type="text/css">
+    .main-bg {
+        width: 100vw;
+        height: 93vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-container {
+        width: 80%;
+        text-align: center;
+        font-family: "Calibri Light";
+        color: white;
+        background: rgba(192, 192, 192, 0.37);
+        margin: 10px;
+        padding: 15px;
+        box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.69);
+        border: 3px solid rgba(54, 12, 53, 0.47);
+        background: linear-gradient(145deg, #c31432, #240b36);
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 8px;
+        letter-spacing: 4px;
+    }
+
+    .input-container:hover {
+        transform: scale(1.05);
+    }
+
+    .input-container > h1 {
+        font-family: "Calibri";
+        color: #ffffff;
+    }
+
+    .input-container > h3 {
+        color: #e1e1e1;
+    }
+
+    .next-page-link {
+        text-align: center;
+        font-size: 25px;
+        color: white;
+        padding: 2px;
+        box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.79);
+        position: relative;
+        border: 3px solid rgba(125, 34, 146, 0.47);
+        font-family: "Bauhaus 93";
+    }
+
+    .next-page-link:hover {
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        transform: scale(1.05);
+        z-index: 1;
+    }
+
+    .next-page-link:first-child {
+        background: linear-gradient(90deg, #c31432, #240b36);
+        margin-right: 2px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .next-page-link:last-child {
+        background: linear-gradient(210deg, #c31432, #240b36);
+        margin-left: 2px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .display-page {
+        width: 85%;
+        text-align: center;
+        margin-bottom: 30px;
+        font-family: "Calibri Light";
+    }
+
+    .page {
+        font-family: 'Inconsolata', monospace;
+        color: white;
+        background: linear-gradient(90deg, rgba(60, 60, 60, 0.5),rgba(78, 78, 78, 0.5));
+        margin: 7px;
+        font-size: 1.3em;
+        padding: 3px;
+        box-shadow: 0px 0px 10px 3px rgba(4, 4, 4, 0.86);
+        z-index: 1;
+        border-radius: 4px;
+    }
+
+    .current {
+        z-index: 2;
+        -webkit-transform: scale(1.4);
+        background: linear-gradient(215deg, #8ab900, #0d5300);
+        box-shadow: 0px 0px 7px 4px #159000;
+    }
+
+    .form-navigation {
+        margin-top: 25px;
+        width: 80%;
+    }
+
+    .input-banner > .material-icons {
+        font-size: 3em;
+        border-radius: 50%;
+    }
+
+    .input-banner:hover {
+        box-shadow: 0px 0px 10px 5px #159000;
+        background: linear-gradient(120deg, #8ab900, #0d5300);
+        border: 3px green solid;
+    }
+
+    .input-banner:after {
+        box-shadow: 0px 0px 10px 5px #159000;
+        background: linear-gradient(120deg, #8ab900, #0d5300);
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    @media (min-width: 600px) {
+        .main-bg > * {
+            max-width: 500px;
+        }
+    }
+
+    #input-field {
+        font-size: 2em;
+        text-align: center;
+        width: 100%;
+        height: 55px;
+        border-radius: 15px;
+        border: 1px black solid;
+        box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.69);
+        background: rgb(237, 237, 237);
+    }
+
+</style>
+
+<div class="main-bg" layout="column" layout-align="center center">
+    <div class="display-page" layout="row">
+        <div class="page" flex=""><span>1</span></div>
+        <div class="page current" flex=""><span>2</span></div>
+        <div class="page" flex=""><span>3</span></div>
+        <div class="page" flex=""><span>4</span></div>
+        <div class="page" flex=""><span>5</span></div>
+        <div class="page" flex=""><span>6</span></div>
+        <div class="page" flex=""><span>7</span></div>
+    </div>
+    <div class="input-container">
+        <h1>Event Title</h1>
+        <h3>Please enter a title for you event</h3>
+    </div>
+
+    <label class="input-banner input-container" ng-click="toggleInput = true">
+        <i class="material-icons" ng-show="!toggleInput">create</i>
+        <input type="text" id="input-field" ng-show="toggleInput"> <!-- value="{{previousInput}} -->
+    </label>
+
+    <div class="form-navigation" layout="row" layout-align="space-between">
+        <a class="next-page-link" href="#!/evaAddPic" flex="" ng-click="lastPageSaveData()"> < </a>
+        <a class="next-page-link" href="#!/evaAddDesc" flex="" ng-click="saveData()"> > </a>
+    </div>
+</div>

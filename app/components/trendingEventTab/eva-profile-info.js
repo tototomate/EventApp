@@ -5,7 +5,6 @@ app.component("evaProfileInfo", {
     controller: "ProfileInfoController",
     bindings: {
         user: '<'
-
     }
 });
 
