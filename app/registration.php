@@ -6,7 +6,7 @@ session_start();
  * der html-teil ist nur als Richtwert zu verstehen, input Felder & form bitte mit selbem Namen erstellen
  */
 
-require ('classes/user.php');
+require('classes/user.php');
 
 ?>
 
@@ -58,7 +58,7 @@ if (isset($_POST['register'])) {
 
     $_SESSION['user'] = $user;
 
-    header("location: app/index.html");
+    header("location: index.html");
 
 }
 ?>

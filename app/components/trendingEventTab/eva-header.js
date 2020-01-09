@@ -8,6 +8,9 @@ app.component("evaHeader",{
 
 });
 
+
+let filter = 0;
+
 app.controller("HeaderController",function($scope){
     $scope.filteroption = ["Events","Benutzer"];
 
@@ -18,9 +21,12 @@ app.controller("HeaderController",function($scope){
 
         if(category === 0){
             $scope.eventsearch = false;
+            filter = 0;
+
 
         }else{
             $scope.eventsearch = true;
+            filter = 1;
         }
 
         let transmitCategory = category;
@@ -29,3 +35,24 @@ app.controller("HeaderController",function($scope){
 
 });
 
+
+function pressed(e) {
+    if ((window.event ? event.keyCode : e.which) === 13) {
+
+        let formData = new FormData();
+        formData.append("filter", filter);
+        formData.append("category", document.getElementById("category").value);
+        formData.append("suchbegriff", document.getElementById("suchbegriff").value);
+
+        let request = new XMLHttpRequest();
+
+        event.preventDefault();
+
+        request.addEventListener("load", function reqListener(){
+            console.log(this.responseText);
+        });
+        request.open("POST", "components/trendingEventTab/eva-header.php");
+        request.send(formData);
+
+    }
+}
