@@ -188,9 +188,27 @@ if (isset($_POST['login'])) {
 
     if (isset($user['password']) && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $user;
-        header("location: app/index.html");
+        header("location: index.html");
     } else {
         echo "failure";
     }
 
 }
+
+try {
+    $db = new PDO('mysql:host=localhost;dbname=EventApp;charset=utf8', 'root', '');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException  $e) {
+    echo "Fehler: " . $e;
+    exit();
+}
+
+$stmt = $db->query("SELECT * FROM User");
+$allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$_SESSION['allUsers'] = $allUsers;
+
+$stmt = $db->query("SELECT * FROM Event");
+$allEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$_SESSION['allEvents'] = $allEvents;

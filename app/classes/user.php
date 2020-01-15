@@ -2,7 +2,6 @@
 
 class user
 {
-    private $user_id;
     private $name;
     private $last_name;
     private $postal_code;
@@ -10,7 +9,6 @@ class user
     private $username;
     private $email;
     private $password;
-    private $verification_token;
 
     /**
      * user constructor.
@@ -31,18 +29,6 @@ class user
         $this->username = $username;
         $this->email = $email;
         $this->password = password_hash($password, PASSWORD_DEFAULT);
-        $this->verification_token = false;
-
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=EventApp;charset=utf8', 'root', '');
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException  $e) {
-            echo "Fehler: " . $e;
-            exit();
-        }
-        $stmt = $db->query("SELECT COUNT(pk_user_id) AS anzahl_id FROM User");
-        $tmp = $stmt->fetch(PDO::FETCH_ASSOC);
-        $this->user_id = $tmp['anzahl_id'] + 1;
     }
 
     /**
@@ -202,7 +188,7 @@ class user
             exit();
         }
 
-        $insert = "INSERT INTO User VALUES('$this->user_id', '$this->name', '$this->last_name', '$this->postal_code', '$this->city', '$this->username', '$this->email', '$this->password', '$this->verification_token')";
+        $insert = "INSERT INTO User (name, last_name, postal_code, city, username, email, password) VALUES('$this->name', '$this->last_name', '$this->postal_code', '$this->city', '$this->username', '$this->email', '$this->password')";
 
         $db->query($insert);
     }

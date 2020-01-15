@@ -1,18 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Lenovo
- * Date: 05.12.2019
- * Time: 11:59
- */
+session_start();
 
-$eingabe = file_get_contents("php://input");
-$suchbegriff = json_decode($eingabe);
+$eingabe = $_POST['suchbegriff'];
 
-echo "HALLO";
-echo $suchbegriff;
+$filter = $_POST['filter'];
 
-/**if ($eingabe === null) {
+
+
+if ($filter == 1) {
 
     try {
         $db = new PDO('mysql:host=localhost;dbname=EventApp;charset=utf8', 'root', '');
@@ -22,10 +17,35 @@ echo $suchbegriff;
         exit();
     }
 
+    $stmt = $db->query("SELECT * FROM User WHERE username LIKE '$eingabe%'");
 
-    $stmt = $db->query("SELECT * FROM User WHERE username LIKE '$eingabe'");
-//$stmt = $db->query("SELECT * FROM Event WHERE eventname LIKE '$eingabe'");
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode($user);
- * */
+    $_SESSION['sucheUser'] = $users;
+
+}
+
+if ($filter == 0) {
+
+    $category = $_POST['category'];
+
+    try {
+        $db = new PDO('mysql:host=localhost;dbname=EventApp;charset=utf8', 'root', '');
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException  $e) {
+        echo "Fehler: " . $e;
+        exit();
+    }
+
+    if ($category == "Alle"){
+        $stmt = $db->query("SELECT * FROM Event INNER JOIN categorized_in ON pk_event_id = fk_event_id INNER JOIN Category ON fk_cat_id = pk_cat_id WHERE name LIKE '$eingabe%'");
+    } else {
+        $stmt = $db->query("SELECT * FROM Event INNER JOIN categorized_in ON pk_event_id = fk_event_id INNER JOIN Category ON fk_cat_id = pk_cat_id WHERE name LIKE '$eingabe%' AND category = '$category'");
+    }
+
+
+
+    $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $_SESSION['sucheEvent'] = $events;
+}

@@ -33,7 +33,7 @@ app.controller("ProfileController", function ($log, $scope, DialogService, userS
     };
 
     $scope.logout = () => {
-        window.location = "/treffpunk_aftermerge/logout.php";
+        window.location = "logout.php";
     };
 
     $scope.changeProfileSettings = function () {

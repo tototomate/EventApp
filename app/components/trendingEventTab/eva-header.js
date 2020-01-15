@@ -2,18 +2,18 @@ app.component("evaHeader",{
     templateUrl: "components/trendingEventTab/eva-header.html",
     controller: "HeaderController",
     bindings:{
-        filter:'&'
+
     }
 
 
 });
 
+
+let filter = 0;
+
 app.controller("HeaderController",function($scope){
     $scope.filteroption = ["Events","Benutzer"];
 
-    $scope.changeFilter = ()=>{
-        this.filter($scope.eventsearch);
-    };
     $scope.change = function ($event,category) {
         let previous = document.querySelector(".focus-opt");
         angular.element(previous).removeClass("focus-opt");
@@ -21,13 +21,12 @@ app.controller("HeaderController",function($scope){
 
         if(category === 0){
             $scope.eventsearch = false;
-            $scope.changeFilter();
-            console.log("Trigger1");
+            filter = 0;
+
 
         }else{
             $scope.eventsearch = true;
-            $scope.changeFilter();
-            console.log("Trigger1");
+            filter = 1;
         }
 
         let transmitCategory = category;
@@ -36,3 +35,24 @@ app.controller("HeaderController",function($scope){
 
 });
 
+
+function pressed(e) {
+    if ((window.event ? event.keyCode : e.which) === 13) {
+
+        let formData = new FormData();
+        formData.append("filter", filter);
+        formData.append("category", document.getElementById("category").value);
+        formData.append("suchbegriff", document.getElementById("suchbegriff").value);
+
+        let request = new XMLHttpRequest();
+
+        event.preventDefault();
+
+        request.addEventListener("load", function reqListener(){
+            location.reload();
+        });
+        request.open("POST", "components/trendingEventTab/eva-header.php");
+        request.send(formData);
+
+    }
+}

@@ -77,10 +77,7 @@ app.controller("ProfileEditController", function ($log, $scope, DialogService, u
         request.send(formData);
 
     };
-    $scope.submitTokenForm = () => {
 
-        /* Backendzeugs */
-    };
     $scope.submitUsernameForm = () => {
 
         let formData = new FormData();
@@ -102,6 +99,23 @@ app.controller("ProfileEditController", function ($log, $scope, DialogService, u
         $scope.UsernameForm.usernamevalue = "";
     };
     $scope.submitPictureForm = () => {
+
+        let formData = new FormData();
+        formData.append("picture", $scope.PictureForm.dateivalue);
+
+        let request = new XMLHttpRequest();
+
+        event.preventDefault();
+
+        request.addEventListener("load", function reqListener(){
+            console.log(this.responseText)
+        });
+        request.open("POST", "components/profileTab/eva-profile-edit.php");
+        request.send(formData);
+
+
+
+
         console.log($scope.PictureForm.dateivalue);
         userService.profileSrc = $scope.PictureForm.dateivalue;
         $scope.changePictureValue = false;

@@ -5,7 +5,7 @@
         /*background-size: 1000% 100%;*/
         /*animation: create-gradient-shift 10s ease infinite;*/
         height: 22vh;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(64, 0, 6)), to(rgba(80,80,80,0)), color-stop(.1, #240003));
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(64, 0, 6)), to(rgba(80, 80, 80, 0)), color-stop(.1, #240003));
 
         display: flex;
         padding: 10px;
@@ -18,10 +18,11 @@
         border-radius: 20px;
         padding: 3px;
     }
-    div.searchBar input{
+
+    div.searchBar input {
         display: flex;
         width: 100%;
-        flex-grow:1;
+        flex-grow: 1;
         border-radius: 20px;
     }
 
@@ -32,14 +33,17 @@
         border-radius: 10px;
         border: 0;
     }
+
     div.filter select option {
         border-radius: 10px;
     }
-    div.searchBar input[placeholder]{
-        padding:5px 5px 5px 10px;
+
+    div.searchBar input[placeholder] {
+        padding: 5px 5px 5px 10px;
     }
-    select{
-        padding:5px 5px 5px 10px;
+
+    select {
+        padding: 5px 5px 5px 10px;
         height: 100%;
     }
 
@@ -70,9 +74,11 @@
         box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.78);
 
     }
+
     .search:hover {
         cursor: pointer;
     }
+
     .search::before {
         content: "";
         position: absolute;
@@ -84,9 +90,10 @@
         width: 12px;
         height: 2px;
         background: white;
-        transform:rotate(45deg);
+        transform: rotate(45deg);
         transition: all .5s;
     }
+
     .search::after {
         content: "";
         position: absolute;
@@ -101,6 +108,7 @@
         border: 2px solid white;
         transition: all .5s;
     }
+
     input {
         font-family: 'Inconsolata', monospace;
         border: 1px solid rgba(0, 0, 0, 0.78);
@@ -114,15 +122,15 @@
         height: 40px;
         outline: none;
         border: none;
-     /* border-bottom: 1 px solid rgba(255, 255, 255, 0.2);*/
+        /* border-bottom: 1 px solid rgba(255, 255, 255, 0.2);*/
         background: linear-gradient(210deg, #c31432, #240b36);
         color: white;
-       /* text-shadow: 0 0 10px crimson;*/
+        /* text-shadow: 0 0 10px crimson;*/
         padding: 0 80px 0 20px;
         border-radius: 30px;
-       /* box-shadow: 0 0 25px 0 crimson,
-        0 20px 25px 0 rgba(0, 0, 0, 0.2);
-    /* box-shadow: inset 0 0 25 px 0 rgba(0, 0, 0, 0.5);*/
+        /* box-shadow: 0 0 25px 0 crimson,
+         0 20px 25px 0 rgba(0, 0, 0, 0.2);
+     /* box-shadow: inset 0 0 25 px 0 rgba(0, 0, 0, 0.5);*/
         transition: all 1s;
         opacity: 0;
         z-index: 5;
@@ -130,7 +138,7 @@
         letter-spacing: 0.1em;
     }
 
-    input:hover{
+    input:hover {
         cursor: pointer;
     }
 
@@ -147,11 +155,13 @@
         box-shadow: 0 0 5px 1px #240003;
 
     }
+
     input:focus ~ .search::before {
         top: 0;
         left: 0;
         width: 25px;
     }
+
     input:focus ~ .search::after {
         top: 0;
         left: 0;
@@ -160,8 +170,9 @@
         border: none;
         background: white;
         border-radius: 0;
-        transform:rotate(-45deg);
+        transform: rotate(-45deg);
     }
+
     input:focus ~ .search::placeholder {
         color: white;
         opacity: 0.5;
@@ -187,6 +198,7 @@
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
     }
+
     .opt-button:last-child {
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
@@ -206,36 +218,40 @@
     }
 </style>
 
-<div class="header" layout="column" layout-align="start center" ng-controller="HeaderController">
+<form method="post" action="eva-header.html" name="SuchForm" onkeydown="pressed(event)">
 
-    <div class="options">
-        <md-button class="opt-button focus-opt" flex="50" ng-click="change($event,0)">Events</md-button>
-        <md-button class="opt-button" flex="50" ng-click="change($event,1)">People</md-button>
+    <div class="header" layout="column" layout-align="start center" ng-controller="HeaderController">
+
+        <div class="options">
+            <md-button id="filter1" class="opt-button focus-opt" flex="50" ng-click="change($event,0)">Events</md-button>
+            <md-button id="filter2" class="opt-button" flex="50" ng-click="change($event,1)">People</md-button>
+        </div>
+        <!--<div class="searchBar">
+            <input type="text" Placeholder="Suche" flex>
+        </div>-->
+
+
+        <!--<div class="filter" placeholder="Filter">
+            <select>
+                <option ng-repeat="x in $ctrl.filteroption" value="{{x}}">{{x}}</option>
+            </select>
+        </div>-->
+
+        <div ng-hide="eventsearch" class="options">
+            <select id="category">
+                <option>Alle</option>
+                <option>Clubbing</option>
+                <option>Party</option>
+                <option>Sport</option>
+                <option>Konzert</option>
+                <option>Festival</option>
+            </select>
+        </div>
+        <div class="container">
+            <input id="suchbegriff" type="text" placeholder="Search...">
+            <div class="search"></div>
+        </div>
+
     </div>
-    <!--<div class="searchBar">
-        <input type="text" Placeholder="Suche" flex>
-    </div>-->
 
-
-    <!--<div class="filter" placeholder="Filter">
-        <select>
-            <option ng-repeat="x in $ctrl.filteroption" value="{{x}}">{{x}}</option>
-        </select>
-    </div>-->
-
-    <div ng-hide="eventsearch" class="options">
-        <select>
-            <option>Alle</option>
-            <option>Clubbing</option>
-            <option>Party</option>
-            <option>Sport</option>
-            <option>Konzert</option>
-            <option>Festival</option>
-        </select>
-    </div>
-    <div class="container">
-        <input type="text" placeholder="Search...">
-        <div class="search"></div>
-    </div>
-
-</div>
+</form>
