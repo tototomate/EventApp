@@ -29,16 +29,20 @@ if (isset($_SESSION['sucheEvent'])) {
     $tempArray = json_encode($tempArray);
     $tempArray = json_decode($tempArray, true);
 
-    $i = 0;
-    $erg = [];
+    if (sizeof($tempArray) == 1){
+        $tempArray[0]["category"] = $categories[0]['category'];
+        echo json_encode($tempArray);
+    } else {
+        $i = 0;
+        $erg = [];
 
-    foreach ($tempArray as $event){
-        $event["category"] = $categories[$i]['category'];
-        //$event["pictures"] = "";
-        $i++;
-        array_push($erg, $event);
+        foreach ($tempArray as $event){
+            $event["category"] = $categories[$i]['category'];
+            //$event["pictures"] = "";
+            $i++;
+            array_push($erg, $event);
+        }
+
+        echo json_encode($erg);
     }
-
-
-    echo json_encode($erg);
 }
