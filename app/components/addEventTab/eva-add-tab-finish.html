@@ -62,8 +62,18 @@
     .next-page-link:first-child {
         background: linear-gradient(90deg, #c31432, #240b36);
         margin-right: 2px;
-        border-radius: 10px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
+
+    .next-page-link:last-child {
+        background: linear-gradient(215deg, #8ab900, #0d5300);
+        margin-left: 2px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border: 3px solid rgba(14, 14, 14, 0.47);
+    }
+
 
     .display-page {
         margin-top: 30px;
@@ -82,7 +92,6 @@
         padding: 3px;
         box-shadow: 0px 0px 10px 3px rgba(4, 4, 4, 0.86);
         z-index: 1;
-        border-radius: 4px;
     }
 
     .current {
@@ -95,7 +104,6 @@
     .form-navigation {
         margin-top: 25px;
         width: 80%;
-        margin-bottom: 200px;
     }
 
     .input-banner > .material-icons {
@@ -139,6 +147,25 @@
         padding: 0;
         color: rgba(255, 255, 255, 0.52);
     }
+
+    .icon {
+        font-size: 2em;
+        position: relative;
+        top: 5px;
+    }
+
+    .preview-input{
+        font-size: 1.3em;
+        letter-spacing: 1.5px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        top: 5px;
+    }
+
+    .preview-container {
+        padding: 5px;
+    }
 </style>
 
 <div class="main-bg" layout="column" layout-align="center center" ng-controller="FinishAddController">
@@ -157,30 +184,38 @@
         </div>
     </div>
 
-    <!--<div class="input-container">
-        <h1>Image:</h1>
-        <h3>{{image}}</h3>
-        <h1>Title:</h1>
-        <h3>{{title}}</h3>
-        <h1>Description:</h1>
-        <h3>{{ev_description}}</h3>
-        <h1>Date:</h1>
-        <h3>{{ev_date}}</h3>
-        <h1>Location:</h1>
-        <h3>{{location}}</h3>
-        <h1>category:</h1>
-        <h3>{{category}}</h3>
-    </div>-->
-
     <div class="input-container">
-        <h1>Almost done</h1>
-        <h3>Please confirm your input!</h3>
+        <div layout="row" class="preview-container">
+            <i class="material-icons icon">title</i>
+            <span class="preview-input">{{title}}</span>
+        </div>
+
+        <div layout="row" class="preview-container">
+            <i class="material-icons icon">image</i>
+            <span class="preview-input">{{image}}</span>
+        </div>
+
+        <div layout="row" class="preview-container">
+            <i class="material-icons icon">description</i>
+            <span class="preview-input">{{ev_description}}</span>
+        </div>
+
+        <div layout="row" class="preview-container">
+            <i class="material-icons icon">date_range</i>
+            <span class="preview-input">{{ev_date}}</span>
+        </div>
+        <div layout="row" class="preview-container">
+            <i class="material-icons icon">navigation</i>
+            <span class="preview-input">{{location}}</span>
+        </div>
+        <div layout="row" class="preview-container">
+            <i class="material-icons icon">apps</i>
+            <span class="preview-input">{{category}}</span>
+        </div>
     </div>
 
-
-
     <div class="form-navigation" layout="row" >
+        <a class="next-page-link" href="#!/evaAddCategory" flex=""> < </a>
         <a class="next-page-link" href="#!/return" flex="" ng-click="createEvent()">submit</a>
-        <!--<a class="next-page-link" href="#!/evaAddCategory" flex="20"> < </a>-->
     </div>
 </div>
