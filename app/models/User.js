@@ -24,8 +24,6 @@ app.factory("User",function(){
             return this.abos;
         };
 
-
-
     }
 
 

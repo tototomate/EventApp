@@ -40,7 +40,7 @@ app.config(function($routeProvider) {
        }).when('/evaAddLocation', {
            templateUrl : 'components/addEventTab/eva-add-location.html',
            controller  : "AddLocationController"
-       }).when('/evaAddCategory', {
+               }).when('/evaAddCategory', {
            templateUrl : 'components/addEventTab/eva-add-category.html',
            controller  : "AddCategoryController"
        }).when('/evaAddDate', {

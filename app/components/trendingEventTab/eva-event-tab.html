@@ -1,11 +1,10 @@
 <style type="text/css">
 
-
     .eva-event-info:last-child {
         padding-bottom:5em;
     }
     .eva-event-info:first-child {
-        padding-top:5em;
+        padding-top: 9em;
     }
 
     .eva-profile-info:last-child {
@@ -15,13 +14,14 @@
     .eva-profile-info:first-child {
         padding-top:8em;
     }
+
 </style>
 
 <eva-header class="fixed-top"></eva-header>
 
 <div id="events" layout="column" layout-align="center center">
     <!-- Neue Komponente Event Display-->
-    <eva-profile-info class="eva-profile-info" ng-repeat="u in users()" user="u"></eva-profile-info>
+   <!-- <eva-profile-info class="eva-profile-info" ng-repeat="u in users()" user="u"></eva-profile-info>-->
 
     <eva-event-info class="eva-event-info" ng-repeat="x in veranstalter()" event="x"></eva-event-info>
 </div>
