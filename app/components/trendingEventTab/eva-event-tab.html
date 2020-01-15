@@ -17,11 +17,11 @@
 
 </style>
 
-<eva-header class="fixed-top"></eva-header>
+<eva-header filter="$ctrl.changeFilter(changeFilter)" class="fixed-top"></eva-header>
 
 <div id="events" layout="column" layout-align="center center">
     <!-- Neue Komponente Event Display-->
-    <eva-profile-info class="eva-profile-info" ng-repeat="u in users()" user="u"></eva-profile-info>
+    <eva-profile-info ng-hide="eventsearch" class="eva-profile-info" ng-repeat="u in users()" user="u"></eva-profile-info>
 
-    <eva-event-info class="eva-event-info" ng-repeat="x in veranstalter()" event="x"></eva-event-info>
+    <eva-event-info ng-show="eventsearch" class="eva-event-info" ng-repeat="x in veranstalter()" event="x"></eva-event-info>
 </div>

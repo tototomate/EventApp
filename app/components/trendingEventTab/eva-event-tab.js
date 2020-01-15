@@ -19,5 +19,10 @@ app.controller("EventController", function ($scope,eventService,usersService,$lo
     };
     $scope.events = () =>{
         return eventService.events;
+    };
+
+    this.changeFilter = (changeFilter) =>{
+        console.log("Trigger");
+        $scope.eventsearch = changeFilter;
     }
 });
