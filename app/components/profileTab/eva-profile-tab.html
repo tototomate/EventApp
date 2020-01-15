@@ -46,6 +46,10 @@
         color: crimson;
     }
 
+    .follow-btn-2:hover {
+
+    }
+
     .settings-btn {
         border: 1px solid black;
         position: relative;
@@ -67,6 +71,13 @@
         color: white;
         letter-spacing: 2px;
     }
+
+    hr {
+        background: linear-gradient(110deg, #833ab4, #fd1d1d, #fcb045);
+        height: 2px;
+        width: 80vw;
+    }
+
 
     #account-detail-container {
         height: 50px;
@@ -136,6 +147,7 @@
     </div>
 
     <div id="profile-bschreibung" layout="column" layout-align="center center">
+        <hr>
         <h1 class="titel-style">Profilbeschreibung</h1>
         <div class="profile-desc">
             {{profileBio()}}

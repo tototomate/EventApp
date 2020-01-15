@@ -2,6 +2,11 @@
     #display-event {
         width: 100%;
         margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+
+    #display-event:hover + #event-info {
     }
 
     .eva-event-info .image-container {
@@ -9,9 +14,9 @@
         z-index: 1;
         /*transform: skew(10deg);*/
         overflow: hidden;
-        border: 3px solid rgba(125, 34, 146, 0.47);
-        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
-        background: linear-gradient(145deg, #c31432, #240b36);
+        padding: 3px;
+        box-shadow: 0px 0px 10px 5px rgb(0, 0, 0);
+        background: linear-gradient(110deg, #833ab4, #fd1d1d, #fcb045);
         text-align: center;
         vertical-align: middle;
         display: table-cell;
@@ -19,7 +24,9 @@
         -moz-transition: opacity 1s ease-in-out;
         -o-transition: opacity 1s ease-in-out;
         transition: opacity 1s ease-in-out;
+        transform: scale(1.08);
     }
+
 
     .event-info-img {
         width: 80vw;
@@ -30,6 +37,7 @@
         background: #191919;
         color: white;
         border-top-right-radius: 25px;
+        padding-bottom: 10px;
     }
 
     .title-container {
@@ -42,32 +50,117 @@
 
     .like-container {
         padding: 5px;
-        background: white;
-        color: black;
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
+        background: linear-gradient(110deg, rgb(253, 29, 29), rgb(252, 176, 69));
+        color: white;
+        letter-spacing: 1.5px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        transform: scale(1.05);
     }
 
     .title-container > span {
         font-size: 1.5em;
         font-weight: 400;
+        letter-spacing: 2px;
     }
 
     .like-container > span {
         font-size: 1.5em;
         font-weight: bold;
+        text-shadow: 1px 1px 2px black, 0 0 1em #000000, 0 0 0.2em rgba(0, 0, 255, 0.24);
     }
 
-
     #event-info {
+        position: relative;
+        z-index: 0;
         width: 100%;
+        height: 80%;
         background: #191919;
         color: white;
         text-align: center;
+        padding-top: 15px;
     }
 
+    .username-container{
+        justify-content: center;
+        font-size: 1.3em;
+        letter-spacing: 1.3px;
+        font-weight: 600;
+    }
+
+    .username-container > span {
+        color: crimson;
+        font-weight: bold;
+    }
+
+    .thumb-up {
+        color: #24ad00;
+        text-shadow: 1px 1px 2px black, 0 0 1em #000000, 0 0 0.2em rgba(0, 221, 0, 0.24);
+    }
+
+    .location-date-container {
+        margin-top: 10px;
+
+    }
+
+    .location-date-container > div > i {
+        color: rgba(220, 20, 60, 0.55);
+        z-index: 1;
+        font-size: 4em;
+        font-weight: bold;
+        text-shadow: 1px 1px 4px black, 0 0 1em #000000, 0 0 0.2em rgba(253, 29, 29, 0.24);
+    }
+
+    .location-date-container > div > span {
+        position: relative;
+        z-index: 2;
+    }
+
+    .location-text {
+        top:-2em;
+        letter-spacing: 1.5px;
+        font-size: 1.5em;
+    }
+
+    .event-desc {
+        text-align: center;
+        font-size: 0.9em;
+        width: 80vw;
+        position: relative;
+        top: -2em;
+    }
+
+    .date-text {
+        top:-2.5em;
+        letter-spacing: 1px;
+        font-size: 1em;
+        font-weight: 600;
+    }
+
+    .like-btn {
+        top: -2em;
+        position: relative;
+        z-index: 1;
+        width: 10em;
+        border-radius: 25px;
+        padding: 2px;
+        background: linear-gradient(210deg, #c31432, #240b36);
+        transform: scale(1.2);
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.67);
+    }
+
+    .like-btn > span {
+        color: white;
+    }
 
     @media (min-width: 600px) {
+        #display-event {
+            max-height: 500px;
+            max-width: 500px;
+        }
+
         .eva-event-info .event-info-img {
             max-height: 500px;
             max-width: 500px;
@@ -79,6 +172,10 @@
     }
 
     @media (min-width: 960px) {
+        #display-event {
+            max-height: 600px;
+            max-width: 600px;
+        }
 
         .image-container .event-info-img {
             max-height: 600px;
@@ -88,7 +185,6 @@
         div#info {
             max-width: 600px;
         }
-
     }
 </style>
 
@@ -96,11 +192,11 @@
 
     <div id="title-display" layout="row" layout-align="space-between">
         <div class="title-container" layout-align="center center">
-            <span>{{$ctrl.event.name}}</span>
+            <span>EventTitle</span>
         </div>
         <div class="like-container" layout="row" layout-align="center center">
             <span>420</span>
-            <i class="material-icons">thumb_up</i>
+            <i class="material-icons thumb-up">thumb_up</i>
         </div>
     </div>
 
@@ -114,10 +210,25 @@
     </a>
 
     <div id="event-info" layout="column">
-        <h3>Username</h3>
+        <div layout="row" class="username-container">
+            <span>@</span>
+            Username
+        </div>
+
         <div class="location-date-container" layout="row" layout-align="space-around">
-            <p>Wien</p>
-            <p>20.04</p>
+            <div class="location" layout="column">
+                <i class="material-icons">navigation</i>
+                <span class="location-text">Wien</span>
+            </div>
+            <div class="date" layout="column">
+                <i class="material-icons">date_range</i>
+                <span class="date-text">25.01.2020</span>
+            </div>
+        </div>
+
+        <div class="event-desc">
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
         </div>
     </div>
+    <md-button class="md-raised like-btn"><span>Like event</span></md-button>
 </div>

@@ -3,6 +3,7 @@
 
     let requestEvents = new XMLHttpRequest();
 
+
     requestEvents.addEventListener("load", function reqListener() {
         getEvent = this.responseText;
         console.log(getEvent);
