@@ -37,10 +37,15 @@ if ($filter == 0) {
         exit();
     }
 
-    $stmt = $db->query("SELECT * FROM Event INNER JOIN categorized_in ON pk_event_id = fk_event_id INNER JOIN Category ON fk_cat_id = pk_cat_id WHERE name LIKE '$eingabe' AND category = '$category'");
+    if ($category == "Alle"){
+        $stmt = $db->query("SELECT * FROM Event INNER JOIN categorized_in ON pk_event_id = fk_event_id INNER JOIN Category ON fk_cat_id = pk_cat_id WHERE name LIKE '$eingabe%'");
+    } else {
+        $stmt = $db->query("SELECT * FROM Event INNER JOIN categorized_in ON pk_event_id = fk_event_id INNER JOIN Category ON fk_cat_id = pk_cat_id WHERE name LIKE '$eingabe%' AND category = '$category'");
+    }
 
-    $events = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+    $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $_SESSION['sucheEvent'] = $events;
-
 }

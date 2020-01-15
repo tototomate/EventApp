@@ -49,7 +49,7 @@ function pressed(e) {
         event.preventDefault();
 
         request.addEventListener("load", function reqListener(){
-            console.log(this.responseText);
+            location.reload();
         });
         request.open("POST", "components/trendingEventTab/eva-header.php");
         request.send(formData);

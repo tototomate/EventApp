@@ -30,5 +30,25 @@ app.controller("FinishAddController", function ($scope,$log,eventService, Event)
         let category = eventCategory;
 
        eventService.events.push(new Event(image,title,description,date,location,category));
+
+
+        let formData = new FormData();
+        formData.append("image", image);
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("date", date);
+        formData.append("location", location);
+        formData.append("category", category);
+
+        let request = new XMLHttpRequest();
+
+        event.preventDefault();
+
+        request.addEventListener("load", function reqListener(){
+            console.log(this.responseText);
+        });
+        request.open("POST", "components/addEventTab/eva-add-tab-finish.php");
+        request.send(formData);
+
     }
 });

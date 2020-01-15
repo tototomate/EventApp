@@ -64,3 +64,8 @@ $stmt = $db->query("SELECT * FROM User");
 $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $_SESSION['allUsers'] = $allUsers;
+
+$stmt = $db->query("SELECT * FROM Event");
+$allEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$_SESSION['allEvents'] = $allEvents;
