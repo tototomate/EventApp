@@ -16,24 +16,111 @@ require ('classes/user.php');
     <meta charset="UTF-8">
     <title>IEvent</title>
 </head>
+<style type="text/css">
+
+    body{
+        overflow-x:hidden;
+        /*background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+        */
+        display:flex;
+        width:100vw;
+        height:100vh;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    @keyframes fadeout{
+        from{
+            opacity:100%;
+
+        }
+        to{
+            opacity:20%;
+
+        }
+    }
+    @keyframes fadein{
+            from{
+                opacity:0%;
+
+            }
+            to{
+                opacity:100%;
+
+            }
+        }
+    img{
+        position:absolute:
+    }
+    img{
+        animation-name:fadeout;
+        animation-timing-function:ease;
+        animation-duration:2s;
+        animation-fill-mode: forwards;
+        animation-delay:0.5s;
+        animation-iteration-count: 1;
+    }
+    div#form_container{
+        position:absolute;
+        opacity:0;
+        animation-name:fadein;
+        animation-duration:2s;
+        animation-delay:1s;
+        animation-fill-mode: forwards;
+
+    }
+    form{
+        border: 3px solid rgba(125, 34, 146, 0.47);
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(145deg, #c31432, #240b36);
+        font-family:"Calibri Light";
+        color:white;
+    }
+    div.input{
+        display:flex;
+        justify-content:space-between;
+        margin:5px;
+    }
+    label{
+        display:flex;
+        min-width:5em;
+    }
+    input{
+        display:flex;
+        flex-grow:1;
+    }
+    div.button{
+        display:flex;
+
+        margin:5px;
+    }
+    div.button button{
+        display:flex;
+    }
+</style>
 <body>
+<img src="app/images/Logos/Logo_4.svg">
+
+<div id="form_container">
 <form method = "post" action = "registration.php" name = "registrationForm">
-    Vorname:  <input type = "text"     name = "fName">          <br>
-    Nachname: <input type = "text"     name = "lName">          <br>
-    PLZ:      <input type = "number"   name = "plz">            <br>
-    Stadt:    <input type = "text"     name = "city">           <br>
-    Username: <input type = "text"     name = "uName">          <br>
-    Email:    <input type = "email"    name = "email">          <br>
-    Passwort: <input type = "password" name = "password">       <br>
+    <div class="input"><label>Vorname:  </label><input type = "text"     name = "fName"></div>
+    <div class="input"><label>Nachname: </label><input type = "text"     name = "lName"></div>
+    <div class="input"><label>PLZ:      </label><input type = "number"   name = "plz"></div>
+    <div class="input"><label>Stadt:    </label><input type = "text"     name = "city"></div>
+    <div class="input"><label>Username: </label><input type = "text"     name = "uName"></div>
+    <div class="input"><label>Email:    </label><input type = "email"    name = "email"></div>
+    <div class="input"><label>Passwort: </label><input type = "password" name = "password"></div>
 
     <!--
 
     PASSWORT WIEDERHOLEN
 
     -->
-
+<div class="button">
     <input type="submit" name="register" value="Register">
+    </div>
 </form>
+</div>
 
 
 <?php
