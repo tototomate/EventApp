@@ -109,12 +109,29 @@
         text-align: center;
         padding: 0 20px 0 20px;
     }
+
+    .head {
+        width: 100%;
+    }
+
+    .loggout-btn {
+        float: right;
+        font-size: 2em;
+        margin-right: 1em;
+        background: linear-gradient(210deg,white, #9f9f9f);
+        color: white;
+        padding: 2px;
+    }
 </style>
 
 <div id="profile" layout="column" layout-align="center center" ng-controller="ProfileController">
 
     <div id="image-name-display-container" layout="column" layout-align="center center">
-        <div class="head"></div>
+        <div class="head">
+            <md-button class="loggout-btn md-raised md-fab" ng-click="$ctrl.logout()">
+                <i class="material-icons logout-icon">exit_to_app</i>
+            </md-button>
+        </div>
 
         <div class="image-container" layout="column" layout-align="center center">
             <img class="profile-img" src="{{profileSrc()}}">
@@ -122,7 +139,7 @@
         </div>
     </div>
 
-    <md-button class="md-raised settings-btn" ng-click="changeProfileSettings()">
+    <md-button class="md-raised settings-btn" ng-click="$ctrl.changeProfileSettings()">
         <div class="btn-text-style">
             SETTINGS
             <md-icon md-svg-src="images/icons8-einstellungen.svg"></md-icon>
