@@ -14,7 +14,6 @@ app.controller("EventController", function ($scope,eventService,usersService,$lo
         return eventService.events;
     };
     $scope.users = () =>{
-
         return usersService.users;
     };
     $scope.events = () =>{

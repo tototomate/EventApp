@@ -1,6 +1,4 @@
-<script type="text/javascript">
-
-</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
 <style>
@@ -9,14 +7,31 @@
         justify-content: center;
         background: crimson;
         padding: 2px;
-        height:92vh;
+        height:100vh;
         width:100vw;
 
     }
+    #aktuellerStandort{
+        position:absolute;
+        z-index: 2;
+        margin:7.5vh 0vh 0vh 19.1vh;
+
+    }
+    #aktuellerStandortButton{
+        height:5vh;
+        width:5vh;
+    }
     #map{
+        position:absolute;
+        z-index: 1  ;
         margin-top: 2px;
         width: 99%;
-        height: 99%;
+        height: 91%;
+    }
+
+    #aktuellerStandortImage{
+        height:3vh;
+        width:3vh;
     }
 
 </style>
@@ -24,42 +39,101 @@
 <body layout="column">
 
 <div class="event" ng-controller="MapController">
-
+    <div id="aktuellerStandort">
+        <button onclick="setMapCenter()" id="aktuellerStandortButton">
+            <img src="images/Standort.png" id="aktuellerStandortImage">
+        </button>
+    </div>
     <div id="map">
         <script>
             let map;
-            let locations = [ {place: 'Peterstraße 22/1', desc: 'Platzhirsch', lat: 48.210033, long: 16.363449},
-                {place: 'Unterholberndorf', desc: 'Moritz Homeparty', lat: 48.433830, long: 16.477860}];
+            let allEvents = $('[ng-controller="MapController"]').scope();
             let lati;
             let longi;
 
+            let locations = [ {place: 'Peterstraße 22/1', desc: 'Platzhirsch', lat: 48.210033, long: 16.363449},
+                {place: 'Unterholberndorf', desc: 'Moritz Homeparty', lat: 48.433830, long: 16.477860}];
+
+
+
+            console.log("erg");
+            console.log(allEvents);
+            console.log(allEvents.$parent.$id);
+            console.log(allEvents.$parent.$id);
+            console.log(allEvents.$$watchers);
+            console.log(allEvents.allLocations);
+            var x= JSON.parse(allEvents.$parent.$id);
+            console.log("x");
+
+            console.log(x);
+
+            /* for (let i = 0; i < locations1.length; i++) {
+                 console.log("Controller Locations: " + locations1[i]);
+             }*/
+
+
+
+
+
             function initMap() {
 
-                locations.push({place: 'Testdorfstrtaße', desc: 'Testparty', lat: 48.567379, long: 16.572229});
+                let getPosition = function (options) {
+                    return new Promise(function (resolve, reject) {
+                        navigator.geolocation.getCurrentPosition(resolve, reject, options);
+                    });
+                };
+
+                function init(){
 
 
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    lati = position.coords.latitude;
-                    longi = position.coords.longitude;
+                    getPosition()
+                        .then((position) => {
+                            lati = position.coords.latitude;
+                            longi = position.coords.longitude;
+                            console.log("latit" + lati);
+                            //  locations.push({place: '', desc: 'Dein Standort', lat: lati, long: longi});
+                            map.setCenter(new google.maps.LatLng(lati, longi));
+                        })
+                        .catch((err) => {
+                            console.error(err.message);
+                        });
+                }
+                init();
 
-                    //locations.push({place: '', desc: 'Dein Standort', lat: lati, long: longi});
-                    createMarker({place: '', desc: 'Dein Standort', lat: lati, long: longi});
+                let address = "Vienna";
 
-                    console.log('Your latitude is :'+lati+' and longitude is '+longi);
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode( { 'address': address}, function(results, status) {
+
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        var latitude = results[0].geometry.location.lat();
+                        var longitude = results[0].geometry.location.lng();
+                    }
+
+                    console.log("latitude: " + latitude);
+                    console.log("longitude: " + longitude);
+
+                    var myLatLng = {lat: latitude, lng: longitude};
+
+                    console.log("erg" + myLatLng[0], myLatLng[1]);
+
                 });
 
 
 
 
+                locations.push({place: 'Testdorfstrtaße', desc: 'Testparty', lat: 48.567379, long: 16.572229});
 
 
-                var mapOptions = {
-                    zoom: 8,
+
+
+                let mapOptions = {
+                    zoom: 15,
                     center: new google.maps.LatLng(48, 16),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
+                };
 
-                map = new google.maps.Map(document.getElementById('map'),mapOptions);
+                map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 
 
@@ -85,15 +159,18 @@
                     markers.push(marker);
 
                 };
+                createMarker({place: '', desc: 'Dein Standort', lat: lati, long: longi});
                 for (let i = 0; i < locations.length; i++) {
                     createMarker(locations[i]);
-                    console.log(locations[i])
+                    console.log(locations[i]);
                 }
                 console.log(lati + "   " + longi);
+
             }
 
-
-
+            function setMapCenter() {
+                map.setCenter(new google.maps.LatLng(lati, longi));
+            }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVIHKn9vpmu2cadDWkr4YlehErlWuilJM&callback=initMap"
                 async defer></script>

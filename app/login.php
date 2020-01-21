@@ -29,7 +29,6 @@ require('classes/user.php');
             @keyframes fadeout {
                 from {
                     opacity: 100%;
-
                 }
                 to {
                     opacity: 20%;
