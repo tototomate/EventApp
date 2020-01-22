@@ -22,6 +22,6 @@ app.service("eventService", function (Event) {
 
 
    for (let i = 0; i < getEvent.length; i++) {
-        this.events.push(new Event("app/images/event-temp.jpg", getEvent[i].name, getEvent[i].description, getEvent[i].location, getEvent[i].date, getEvent[i].category));
+        this.events.push(new Event("app/images/event-temp.jpg", getEvent[i].name, getEvent[i].description, getEvent[i].location, getEvent[i].date, getEvent[i].category, getEvent[i].likes));
     }
 });

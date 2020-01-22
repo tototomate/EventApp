@@ -264,7 +264,7 @@
             <span>{{$ctrl.event.name}}</span>
         </div>
         <div class="like-container" layout="row" layout-align="center center">
-            <span>137</span>
+            <span>{{$ctrl.event.name}}</span>
             <i class="material-icons thumb-up">thumb_up</i>
         </div>
     </div>
@@ -298,5 +298,5 @@
           <p>{{$ctrl.event.description}}</p>
         </div>
     </div>
-    <md-button ng-show="visibleOnHover" class="md-raised like-btn"><span>Like event</span></md-button>
+    <md-button ng-show="visibleOnHover" class="md-raised like-btn" ng-click="$ctrl.like($ctrl.event.name)"><span>Like event</span></md-button>
 </div>

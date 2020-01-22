@@ -19,4 +19,12 @@ $like_event = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $like_event_id = $like_event['pk_event_id'];
 
-$stmt = $db->query("INSERT INTO user_partakes (fk_user_id, fk_event_id) VALUES('$userId', '$like_event_id');");
+$stmt = $db->query("SELECT COUNT(*) AS 'Anzahl' FROM user_partakes WHERE fk_user_id = '$userId' AND fk_event_id = '$like_event_id'");
+$already_liked = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($already_liked['Anzahl'] > 0){
+
+} else {
+    $stmt = $db->query("INSERT INTO user_partakes (fk_user_id, fk_event_id) VALUES('$userId', '$like_event_id');");
+}
+

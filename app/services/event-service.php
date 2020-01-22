@@ -21,6 +21,8 @@ if (isset($_SESSION['sucheEvent'])) {
     $stmt = $db->query("SELECT category FROM Event INNER JOIN categorized_in ON pk_event_id = fk_event_id INNER JOIN category ON fk_cat_id = pk_cat_id ORDER BY pk_event_id;");
     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $stmt = $db->query("SELECT COUNT(*) AS 'likes' FROM user_partakes;");
+    $likes = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $pictures = [];
 
@@ -38,7 +40,7 @@ if (isset($_SESSION['sucheEvent'])) {
 
         foreach ($tempArray as $event){
             $event["category"] = $categories[$i]['category'];
-            //$event["pictures"] = "";
+            $event["likes"] = $likes['likes'];
             $i++;
             array_push($erg, $event);
         }
