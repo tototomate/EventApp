@@ -24,7 +24,6 @@ app.controller("ProfileInfoController", function ($log,$scope) {
         request.open("POST", "components/trendingEventTab/eva-profile-info.php");
         request.send(formData);
     }
-
 });
 
 
