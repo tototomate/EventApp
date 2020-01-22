@@ -99,7 +99,7 @@ require('classes/user.php');
     }
 </style>
 <body>
-<img src="app/images/Logos/Logo_4.svg">
+<img src="images/Logos/Logo_4.svg">
 
 <div id="form_container">
 <form method = "post" action = "registration.php" name = "registrationForm">
