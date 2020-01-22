@@ -6,9 +6,9 @@
 
     requestEvents.addEventListener("load", function reqListener() {
         getEvent = this.responseText;
-        console.log(getEvent);
+        //console.log(getEvent);
         getEvent = JSON.parse(getEvent);
-        console.log(getEvent);
+        //console.log(getEvent);
     });
 
     requestEvents.open("GET", "services/event-service.php");

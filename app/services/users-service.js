@@ -1,14 +1,15 @@
-let usernames = "";
+let data = "";
 
 let requestUser = new XMLHttpRequest();
 
 requestUser.addEventListener("load", function reqListener() {
-    usernames = this.responseText;
-    usernames = JSON.parse(usernames);
-    console.log(usernames);
+    data = this.responseText;
+    console.log(data);
+    data = JSON.parse(data);
+    console.log(data);
 
 });
-requestUser.open("GET", "services/user-services.php");
+requestUser.open("GET", "services/users-services.php");
 requestUser.send();
 
 
@@ -16,8 +17,9 @@ app.service("usersService", function (User) {
 
     this.users = [];
 
-    for (let i = 0; i < usernames.length; i++) {
-        this.users.push(new User(usernames[i].username, "images/sample_pic.jpg", 4, 22, 2));
-    }
+        for (let i = 0; i < data['user'].length; i++) {
+            this.users.push(new User(data['user'][i].username, "images/sample_pic.jpg",
+                data['eventsCount'][i], data['followers'][i], data['abos'][i]));
+        }
 
 });
