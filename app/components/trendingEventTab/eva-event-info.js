@@ -15,10 +15,8 @@ app.controller("InfoController", function ($log) {
 
     this.infoValue = () =>{
 
-        let focusedEvent = document.querySelector("event");
-        element.scrollIntoView({ behavior: 'smooth', block: 'end'});
+        /*let focusedEvent = document.querySelector("event");
+        !element.scrollIntoView({ behavior: 'smooth', block: 'end'});*/
 
-        console.log(this.event);
-        console.log(this.event);
     }
 });

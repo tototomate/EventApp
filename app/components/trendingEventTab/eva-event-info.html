@@ -257,11 +257,11 @@
 
 </style>
 
-<div id="display-event" layout="column" layout-align="center center" ng-mouseover="visibleOnHover = true" ng-mouseleave="visibleOnHover = false">
+<div id="display-event" layout="column" layout-align="center center" ng-mouseover="visibleOnHover = true" ng-mouseleave="visibleOnHover = false" ng-controller="InfoController">
 
     <div id="title-display" layout="row" layout-align="space-between" ng-show="visibleOnHover">
         <div class="title-container" layout-align="center center">
-            <span>EventTitle</span>
+            <span>{{$ctrl.event.name}}</span>
         </div>
         <div class="like-container" layout="row" layout-align="center center">
             <span>137</span>
@@ -280,23 +280,22 @@
 
     <div id="event-info" layout="column"  ng-show="visibleOnHover">
         <div layout="row" class="username-container">
-            <span>@</span>
-            Username
+            {{$ctrl.event.category}}
         </div>
 
         <div class="location-date-container" layout="row" layout-align="space-around">
             <div class="location" layout="column">
                 <i class="material-icons">navigation</i>
-                <span class="location-text">Wien</span>
+                <span class="location-text">{{$ctrl.event.location}}</span>
             </div>
             <div class="date" layout="column">
                 <i class="material-icons">date_range</i>
-                <span class="date-text">25.01.2020</span>
+                <span class="date-text">{{$ctrl.event.date}}</span>
             </div>
         </div>
 
         <div class="event-desc">
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
+          <p>{{$ctrl.event.description}}</p>
         </div>
     </div>
     <md-button ng-show="visibleOnHover" class="md-raised like-btn"><span>Like event</span></md-button>

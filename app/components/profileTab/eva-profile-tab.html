@@ -122,13 +122,16 @@
         color: white;
         padding: 2px;
     }
+    eva-profile-edit{
+        display: none;
+    }
 </style>
 
 <div id="profile" layout="column" layout-align="center center" ng-controller="ProfileController">
 
     <div id="image-name-display-container" layout="column" layout-align="center center">
         <div class="head">
-            <md-button class="loggout-btn md-raised md-fab" ng-click="$ctrl.logout()">
+            <md-button class="loggout-btn md-raised md-fab" ng-click="logout()">
                 <i class="material-icons logout-icon">exit_to_app</i>
             </md-button>
         </div>
@@ -139,7 +142,7 @@
         </div>
     </div>
 
-    <md-button class="md-raised settings-btn" ng-click="$ctrl.changeProfileSettings()">
+    <md-button class="md-raised settings-btn" ng-click="changeProfileSettings()">
         <div class="btn-text-style">
             SETTINGS
             <md-icon md-svg-src="images/icons8-einstellungen.svg"></md-icon>
@@ -177,5 +180,5 @@
             <eva-event-info class="eva-event-info" ng-repeat="event in events()" event="event"></eva-event-info>
         </div>
     </div>
-
+<eva-profile-edit></eva-profile-edit>
 </div>

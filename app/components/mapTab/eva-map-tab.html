@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
 <style>
     div.event{
         display: flex;
@@ -46,26 +45,27 @@
     </div>
     <div id="map">
         <script>
-            let map;
-            let allEvents = $('[ng-controller="MapController"]').scope();
+            //let allEvents = $('[ng-controller="MapController"]').scope();
             let lati;
             let longi;
+            let map;
+            let locations = [ {place: 'Opernring 11', desc: 'Platzhirsch', lat: 48.202620, long: 16.366900},
+                {place: 'Mariahilfer Straße 3', desc: 'Heart Club', lat: 48.199870, long: 16.355490},
+                {place: 'Augartenbrücke 1', desc: 'Flex', lat: 48.218056, long: 16.370556},
+                {place: 'Riesenradplatz 7', desc: 'Prater DOME', lat: 48.217326, long: 16.397424}];
 
-            let locations = [ {place: 'Peterstraße 22/1', desc: 'Platzhirsch', lat: 48.210033, long: 16.363449},
-                {place: 'Unterholberndorf', desc: 'Moritz Homeparty', lat: 48.433830, long: 16.477860}];
 
 
+            /* console.log("erg");
+             console.log(allEvents);
+             console.log(allEvents.$parent.$id);
+             console.log(allEvents.$parent.$id);
+             console.log(allEvents.$$watchers);
+             console.log(allEvents.allLocations);
+             var x= JSON.parse(allEvents.$parent.$id);
+             console.log("x");
 
-            console.log("erg");
-            console.log(allEvents);
-            console.log(allEvents.$parent.$id);
-            console.log(allEvents.$parent.$id);
-            console.log(allEvents.$$watchers);
-            console.log(allEvents.allLocations);
-            var x= JSON.parse(allEvents.$parent.$id);
-            console.log("x");
-
-            console.log(x);
+             console.log(x);*/
 
             /* for (let i = 0; i < locations1.length; i++) {
                  console.log("Controller Locations: " + locations1[i]);
@@ -118,14 +118,6 @@
                     console.log("erg" + myLatLng[0], myLatLng[1]);
 
                 });
-
-
-
-
-                locations.push({place: 'Testdorfstrtaße', desc: 'Testparty', lat: 48.567379, long: 16.572229});
-
-
-
 
                 let mapOptions = {
                     zoom: 15,

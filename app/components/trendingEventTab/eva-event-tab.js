@@ -11,18 +11,11 @@ app.component("evaEventTab", {
 app.controller("EventController", function ($scope,eventService,usersService,$log) {
     $log.debug("EventController");
 
-    $scope.veranstalter = ()=>{
-        return eventService.events;
-    };
+
     $scope.users = () =>{
         return usersService.users;
     };
     $scope.events = () =>{
         return eventService.events;
     };
-
-    this.changeFilter = (changeFilter) =>{
-        console.log("Trigger");
-        $scope.eventsearch = changeFilter;
-    }
 });
