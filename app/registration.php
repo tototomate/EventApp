@@ -110,12 +110,6 @@ require('classes/user.php');
     <div class="input"><label>Username: </label><input type = "text"     name = "uName"></div>
     <div class="input"><label>Email:    </label><input type = "email"    name = "email"></div>
     <div class="input"><label>Passwort: </label><input type = "password" name = "password"></div>
-
-    <!--
-
-    PASSWORT WIEDERHOLEN
-
-    -->
 <div class="button">
     <input type="submit" name="register" value="Register">
     </div>
@@ -145,7 +139,7 @@ if (isset($_POST['register'])) {
 
     $_SESSION['user'] = $user;
 
-    header("location: index.html");
+    echo "<script> location.href='index.html'; </script>";
 
 }
 ?>

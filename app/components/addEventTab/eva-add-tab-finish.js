@@ -20,7 +20,7 @@ app.controller("FinishAddController", function ($scope,$log,eventService, Event)
     $scope.location = eventLocation;
     $scope.category = eventCategory;
 
-    $scope.createEvent = () =>{
+    $scope.createEvent = () => {
 
         let image = imageSrc;
         let title = eventTitle;

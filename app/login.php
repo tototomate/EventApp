@@ -7,11 +7,11 @@ require('classes/user.php');
     <head>
         <meta charset="UTF-8">
         <title>IEvent</title>
-
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               crossorigin="anonymous">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
         <style type="text/css">
 
             body {
@@ -29,7 +29,6 @@ require('classes/user.php');
             @keyframes fadeout {
                 from {
                     opacity: 100%;
-
                 }
                 to {
                     opacity: 20%;
@@ -162,7 +161,7 @@ require('classes/user.php');
     <body>
 <?php
 if (isset($_POST['register'])) {
-    header("location: registration.php");
+    echo "<script> location.href='registration.php'; </script>";
 }
 if (isset($_POST['login'])) {
 
@@ -184,7 +183,7 @@ if (isset($_POST['login'])) {
 
     if (isset($user['password']) && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $user;
-        header("location: index.html");
+        echo "<script> location.href='index.html'; </script>";
     } else {
         echo "failure";
     }
