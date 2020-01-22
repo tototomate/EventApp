@@ -168,10 +168,10 @@
         position: relative;
     }
 
-        .follow-btn-2:hover {
-            box-shadow: 0px 0px 20px 10px #159000;
-            background: linear-gradient(215deg, #c3aa00, #0d5300);
-        }
+    .follow-btn-2:hover {
+        box-shadow: 0px 0px 20px 10px #159000;
+        background: linear-gradient(215deg, #c3aa00, #0d5300);
+    }
     .follow-btn-2:after {
         box-shadow: 0px 0px 20px 10px #159000;
         background: linear-gradient(215deg, #c3aa00, #0d5300);
@@ -189,18 +189,19 @@
 
         }
     }*/
+
+
 </style>
 
 
 
 <div id="profile-container" ng-controller="ProfileInfoController">
-    <div id="profile" ng-controller="ProfileInfoController">
 
-        <div class="container spec" layout="column">
+    <div id="profile" ng-controller="ProfileInfoController">
+        <div class="container spec" layout="column" >
             <div layout="row" layout-align="space-between center">
                 <img src="images/logo-eva-4.png" class="profile-pic">
-
-                <div layout="column" class="container" layout-align="center center">
+                <div layout="column" class="container" layout-align="center center" >
                     <h1 class="custom-name-display">
                         <i class="material-icons account_icon">account_box</i>
                         {{$ctrl.user.name}}
@@ -214,7 +215,7 @@
                     <p flex="40">{{$ctrl.user.fans}}<br>Fans</p>
                 </div>
 
-                <md-button class="follow-btn-2"> follow </md-button>
+                <md-button class="follow-btn-2" > follow </md-button>
             </div>
         </div>
             <!--

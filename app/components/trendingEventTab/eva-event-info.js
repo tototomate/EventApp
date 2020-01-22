@@ -11,11 +11,14 @@ app.component("evaEventInfo", {
 app.controller("InfoController", function ($log) {
     $log.debug("InfoController");
 
+    this.visibleOnHover = false;
+
     this.infoValue = () =>{
+
+        let focusedEvent = document.querySelector("event");
+        element.scrollIntoView({ behavior: 'smooth', block: 'end'});
 
         console.log(this.event);
         console.log(this.event);
-        console.log("Trigger");
-        this.infovalue = !this.infovalue;
     }
 });

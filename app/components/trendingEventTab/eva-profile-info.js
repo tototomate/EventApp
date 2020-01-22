@@ -10,6 +10,7 @@ app.component("evaProfileInfo", {
 
 app.controller("ProfileInfoController", function ($log,$scope) {
     $log.debug("ProfileInfoController");
+
 });
 
 

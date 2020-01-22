@@ -28,6 +28,7 @@ app.config(function($routeProvider) {
        }).when('/evaEventFullInfo', {
             templateUrl : 'components/trendingEventTab/eva-event-full-info.html',
             controller  : "FullInfoController"
+
        }).when('/evaAddPic', {
            templateUrl : 'components/addEventTab/eva-add-pic.html',
            controller  : "AddPicController"

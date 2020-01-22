@@ -1,7 +1,7 @@
 <style type="text/css">
     #display-event {
         width: 100%;
-        margin-top: 10px;
+        margin-top: 5vh;
         margin-bottom: 10px;
     }
 
@@ -154,6 +154,15 @@
     .like-btn > span {
         color: white;
     }
+    .like-btn:hover {
+        box-shadow: 0px 0px 20px 10px #159000;
+        background: linear-gradient(215deg, #9fc300, #0f6000);
+    }
+    .like-btn:after {
+        box-shadow: 0px 0px 20px 10px #159000;
+        background: linear-gradient(215deg, #c3aa00, #0d5300);
+    }
+
 
     @media (min-width: 600px) {
         #display-event {
@@ -186,11 +195,71 @@
             max-width: 600px;
         }
     }
+
+    /* Click animation */
+
+    #display-event:hover > #title-display{
+        animation-name: animate-slide-from-bottom;
+        animation-duration: 2s;
+    }
+
+    #display-event:hover > #event-info {
+        animation-name: animate-slide-from-top;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes animate-slide-from-bottom {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            top: 0;
+        }
+    }
+
+    @keyframes animate-slide-from-top {
+        0%{
+            opacity: 0;
+            top: -5vh;
+            transform: translateY(-100%);
+        }
+        25% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+            z-index: 0;
+            top: 0;
+        }
+    }
+
+    #display-event:hover > .like-btn {
+        animation-name: animate-scale;
+        animation-duration: 2s;
+    }
+
+    @keyframes animate-scale {
+        0% {
+            transform: scale(0);
+        }
+        55% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1.2);
+        }
+    }
+
+    #display-event:hover > #event {
+        animation-name: animate-margin-top;
+        animation-duration: 0.5s;
+    }
+
 </style>
 
-<div id="display-event" layout="column" layout-align="center center">
+<div id="display-event" layout="column" layout-align="center center" ng-mouseover="visibleOnHover = true" ng-mouseleave="visibleOnHover = false">
 
-    <div id="title-display" layout="row" layout-align="space-between">
+    <div id="title-display" layout="row" layout-align="space-between" ng-show="visibleOnHover">
         <div class="title-container" layout-align="center center">
             <span>EventTitle</span>
         </div>
@@ -201,7 +270,7 @@
     </div>
 
 
-    <a class="event" ng-click="$ctrl.infoValue()" ng-controller="InfoController">
+    <a id="event" ng-click="$ctrl.infoValue()" ng-controller="InfoController" >
         <div class="event-info-content">
             <div class="image-container">
                 <img src="images/event-temp.jpg" class="event-info-img">
@@ -209,7 +278,7 @@
         </div>
     </a>
 
-    <div id="event-info" layout="column">
+    <div id="event-info" layout="column"  ng-show="visibleOnHover">
         <div layout="row" class="username-container">
             <span>@</span>
             Username
@@ -230,5 +299,5 @@
           <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
         </div>
     </div>
-    <md-button class="md-raised like-btn"><span>Like event</span></md-button>
+    <md-button ng-show="visibleOnHover" class="md-raised like-btn"><span>Like event</span></md-button>
 </div>
